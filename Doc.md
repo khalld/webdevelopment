@@ -23,124 +23,119 @@ Con URLs e verbs, i client può inizializzare una richiesta al server. In ritorn
 
 # CSS
 
-# JS
+# JavaScript
 
-JavaScript è un linguaggio di programmazione che permette di implementare cose complesse sulle web pages. Ogni volta che una pagina web fa molto di più che rimanere lì e visualizzare informazioni statiche da guardare, visualizzare aggiornamenti di contenuto tempestivi o mappe interattive o grafica animata 2D/3D o scorrere jukebox video, ecc., puoi scommettere che JavaScript probabilmente è coinvolto.
+JavaScript è un linguaggio di programmazione che permette di implementare cose complesse sulle web pages:
 
-È il terzo strato della torta a strati delle tecnologie web standard.
+![alt text](images/server-side-and-client-side-of-tech-stack-1.jpeg)
 
-È un linguaggio tipizzato dinamico (il tipo di dati diventa noto in fase di esecuzione) e un linguaggio multiparadigma (funzionale, imperativo, asincrono, ecc.).
+- È il terzo strato della torta a strati delle tecnologie web standard;
+- È un linguaggio tipizzato dinamico (il tipo di dati diventa noto in fase di esecuzione) e un linguaggio multiparadigma (funzionale, imperativo, asincrono, ecc.);
+- Linguaggio non bloccante a thread singolo;
+- È l'implementazione dell'ECMA Script (o ES), ovvero la specifica tecnica standard del linguaggio di scripting e mantenuta dall'ECMA International. Fondamentalmente, le implementazioni dei linguaggi (come Javascript o Actionscript) sono state progettate solo per il client e lo sviluppo web (la versione più usata è la 6 ES6);
+- (Data type conversion) È un linguaggio tipizzato dinamicamente. Non è necessario specificare il dato della variabile quando viene dichiarato ed i data types sono convertiti automaticamente come richiesto durante l'esecuzione dello script.
 
-Inoltre, JavaScript è un linguaggio non bloccante a thread singolo.
+<b>Utilizzi:</b>
 
-JavaScript è l'implementazione dell'ECMA Script (o ES), ovvero la specifica tecnica standard del linguaggio di scripting e mantenuta dall'ECMA International. Fondamentalmente, le implementazioni dei linguaggi (come Javascript o Actionscript) sono state progettate solo per il client e lo sviluppo web.
-La versione più usata è la sesta versione (o ES6).
+- Memorizza valori utili all'interno di variabili
+- Operazioni su parti di testo
+- Esecuzione di codice in risposta a determinati eventi che si verificano su una pagina web.
+- Gestisci gli elementi HTML
+- Può usare le API!
+- Esegui alcune chiamate sincronizzate o asincrone a Internet
+- Disegna e renderizza grafica 2D o 3D
+- Ottiene la posizione
+- Riproduci video e audio
 
-## Cosa può fare?
-
-Memorizza valori utili all'interno di variabili
-Operazioni su parti di testo
-Esecuzione di codice in risposta a determinati eventi che si verificano su una pagina web.
-Gestisci gli elementi HTML Può usare le API!
-Esegui alcune chiamate sincronizzate o asincrone a Internet Disegna e renderizza grafica 2D o 3D
-Ottieni la tua posizione
-Riproduci video e audio
-
-## Come funziona:
-
-- Il JavaScript viene eseguito dal motore JavaScript del browser, dopo che HTML e CSS sono stati assemblati e messi insieme in una pagina web. Ciò garantisce che la struttura e lo stile della pagina siano già presenti nel momento in cui JavaScript inizia a essere eseguito. Questa è una buona cosa, poiché un uso molto comune di JavaScript è quello di modificare dinamicamente HTML e CSS per aggiornare un'interfaccia utente.
+<b>Funzionamento:</b>
+- Il JavaScript viene eseguito dal motore JavaScript del browser, dopo che HTML e CSS sono stati assemblati e messi insieme in una pagina web: ciò garantisce che la struttura e lo stile della pagina siano già presenti nel momento in cui JavaScript inizia a essere eseguito. Questa è una buona cosa, poiché un uso molto comune di JavaScript è quello di modificare dinamicamente HTML e CSS per aggiornare un'interfaccia utente;
 - Se JavaScript fosse stato caricato e tentato di essere eseguito prima che HTML e CSS potessero influire, si sarebbero verificati degli errori.
 
-## Sicurezza
+<b>Sicurezza:</b>
 
-Ogni scheda del browser è il proprio bucket separato per l'esecuzione del codice, ciò significa che nella maggior parte dei casi il codice in ciascuna scheda viene eseguito completamente separatamente e il codice in una scheda non può influire direttamente sul codice in un'altra scheda o su un altro sito Web. È una buona misura di sicurezza, se così non fosse, i pirati potrebbero iniziare a scrivere codice per rubare informazioni da altri siti Web e altre cose così brutte.
+Ogni scheda del browser è il proprio bucket separato per l'esecuzione del codice, ciò significa che nella maggior parte dei casi il codice in ciascuna scheda viene eseguito completamente separato e il codice in una scheda non può influire direttamente sul codice in un'altra scheda o su un altro sito Web. È una buona misura di sicurezza, se così non fosse, i pirati potrebbero iniziare a scrivere codice per rubare informazioni da altri siti Web ed altro.
 
-## Interpretato vs compilato
+<b>Linguaggio interpretato vs compilato</b>
 
-Anche i browser web lo eseguono in modalità sandbox quindi non puoi accedere direttamente al sistema host dell'utente (immagine se puoi quello che puoi installare o eliminare qualsiasi file dal computer del visitatore)
+Anche i browser web lo eseguono in modalità sandbox quindi non puoi accedere direttamente al sistema host dell'utente (immagine se puoi quello che puoi installare o eliminare qualsiasi file dal computer del visitatore).
 
 JavaScript è un linguaggio interpretato, il codice viene eseguito dall'alto verso il basso e il risultato dell'esecuzione del codice viene immediatamente restituito. Non è necessario trasformare il codice in una forma diversa prima che il browser lo esegua.
 
-I linguaggi compilati, invece, vengono trasformati (compilati) in un'altra forma prima di essere eseguiti dal computer.
+I linguaggi compilati, invece, vengono trasformati (compilati) in un'altra forma prima di essere eseguiti dal computer. Ad esempio, C/C++ vengono compilati in un linguaggio assembly che viene quindi eseguito dal computer.
 
-Ad esempio, C/C++ vengono compilati in un linguaggio assembly che viene quindi eseguito dal computer.
+<table>
+    <tr>
+    <p align="center">Javascript vs Java</p>
+    </tr>
+<tr>
+    <th> Javascript </th>
+    <th> Java </th>
+</tr>
+<tr>
+    <td>
+        - Orientato agli oggetti, l'ereditarietà avviene tramite il meccanismo del prototipo e le proprietà e i metodi possono essere aggiunti dinamicamente a qualsiasi oggetto;<br>
+        - Nessuna distinzione tra tipi di oggetti;<br>
+        - I tipi di dati variabili non vengono dichiarati (tipizzazione dinamica);<br>
+        - Interpretato.
+    </td>
+    <td>
+        - Basato sulle classi;<br>
+        - Gli oggetti sono divisi in classi e istanze con tutta l'ereditarietà attraverso la gerarchia delle classi;<br>
+        - Le classi e le istanze <u>non</u> possono avere proprietà o metodi aggiunti dinamicamente;<br>
+        - I tipi di dati variabili devono essere dichiarati (tipizzazione statica);<br>
+        - Semi-compilato (o semi-interpretato).
+    </td>
+</tr>
+</table>
 
-## JavaScript vs Java
-
-Javascript
-
-- Orientato agli oggetti.
-- Nessuna distinzione tra tipi di oggetti.
-- L'ereditarietà avviene tramite il meccanismo del prototipo e le proprietà e i metodi possono essere aggiunti dinamicamente a qualsiasi oggetto.
-- I tipi di dati variabili non vengono dichiarati (tipizzazione dinamica).
-- Interpretato
-
-Java
-
-- Basato sulla classe.
-- Gli oggetti sono divisi in classi e istanze con tutta l'ereditarietà attraverso la gerarchia delle classi.
-- Le classi e le istanze non possono avere proprietà o metodi aggiunti dinamicamente.
-- I tipi di dati variabili devono essere dichiarati (tipizzazione statica). Semi-compilato (o semi-interpretato)
-
-## Compe importare JavaScript
+## Import di JavaScript
 
 JavaScript viene applicato alla tua pagina HTML in modo simile ai CSS. Mentre CSS usa gli elementi `<link>` per applicare fogli di stile esterni e gli elementi `<style>` per applicare fogli di stile interni all'HTML, JavaScript ha bisogno solo di un amico nel mondo dell'HTML, l'elemento `<script>`.
 
 Internal:
 
-```
+```javascript
 <script>
 // JavaScript goes here
 </script>
 ```
 
-Esterno:
+External:
 
-``` <script src="script.js"></script> ```
+```javascript
+<script src="script.js"></script>
+```
 
-Javascript può essere inserito nella sezione `<head>`.
+Può essere inserito nella sezione `<head>`, tuttavia è meglio posizionarlo nella parte inferiore della sezione `<body>`, perché posizionare gli script lì migliora la velocità di visualizzazione, poiché la compilazione degli script ne rallenta la visualizzazione.
 
-Tuttavia è meglio posizionarlo nella parte inferiore della sezione `<body>`, perché posizionare gli script lì migliora la velocità di visualizzazione, poiché la compilazione degli script rallenta la visualizzazione.
+<b>Variabili</b>
 
-## Variabili
-
-Utilizzi le variabili come nomi simbolici per i valori nella tua applicazione. I nomi delle variabili, detti identificatori, sono conformi a determinate regole.
-
-Un identificatore JavaScript deve iniziare con una lettera, un trattino basso (`_`) o un segno di dollaro (`$`); i caratteri successivi possono essere anche cifre (`0-9`). Poiché JavaScript fa distinzione tra maiuscole e minuscole, le lettere includono i caratteri da "A" a "Z" (maiuscolo) e i caratteri da "a" a "z" (minuscolo). Tre modi per dichiarare le variabili:
+I nomi delle variabili, detti identificatori, sono conformi a determinate regole. Un identificatore JavaScript deve iniziare con una lettera, un trattino basso (`_`) o un segno di dollaro (`$`); i caratteri successivi possono essere anche cifre (`0-9`). Poiché JavaScript fa distinzione tra maiuscole e minuscole, le lettere includono i caratteri da "A" a "Z" (maiuscolo) e i caratteri da "a" a "z" (minuscolo). Tre modi per dichiarare le variabili:
 - keyword `var`: può essere usata per dichiarare sia variabili locali che globali
-- Assegnando un valore, in questo modo si dichiarerà sempre una variabile globale. Se dichiarata fuori da ogni funzione, genera un strict javascript warning (non si dovrebbe usare)
+- Assegnando un valore, in questo modo si dichiarerà sempre una variabile globale. Se dichiarata fuori da ogni funzione, genera un `strict javascript warning` (non si dovrebbe usare)
 - keyword `let`: sintassi usata per dichiarare block-scope local variables
 - keyword `const`: dichiarare una block-scope local constant
 
-Una variabile utilizzando solo let o var senza specificare il valore assegnato è `undefined`
+Una variabile utilizzando solo `let` o `var` senza specificare il valore assegnato è `undefined`. La lunghezza di una stringa si ottiene con `.length`. Ogni carattere ha il suo indice il primo carattere è 0 ed arriva fino a `length-1`
 
-Lunghezza si una stringa: `.length`. Ogni carattere ha il suo indicem il primo carattere è 0 ed arriva fino a `length-1`
-
-## JS data type conversion
-
-È un linguaggio tipizzato dinamicamente. Non è necessario specificare il dato della variabile quando viene dichiarato ed i data types sono convertiti automaticamente come richiesto durante l'esecuzione dello script. 
-
-## If statement
+## If
 
 Se l'esecuzione dell'if e della specifica condizione è vera entra nella prima, altrimenti un altro stato viene eseguito.
 
-Il costrutto if ( Expression ) Statement costringerà il risultato della valutazione dell'espressione a un valore booleano utilizzando il metodo astratto ToBoolean per il quale la specifica ES5 deﬁnisce il seguente algoritmo:
-
-Argomento --> Risultato
+Il costrutto `if ( Expression ) Statement` convertirà il risultato della valutazione dell'espressione a un valore booleano utilizzando il metodo astratto ToBoolean per il quale la specifica ES5 deﬁnisce il seguente algoritmo:
 
 | Tipo argomento | Risultato |
 | --- | --- |
-| undefined | false |
-| null | false |
-| boolean | risultato uguale all'input (no converison) |
-| number | risultato è falso se l'argomento è +0, -0, NaN; altrimenti true |
-| string | risultato è falso se l'argomento è una stringa vuota (lunghezza zero); altrimenti vero |
-| object | true |
+| `undefined` | `false` |
+| `null` | `false` |
+| `boolean` | risultato uguale all'input (no conversione) |
+| `number` | risultato è `falso` se l'argomento è <b>+0, -0, NaN</b>; altrimenti `true` |
+| `string` | risultato è `falso` se l'argomento è una stringa vuota (lunghezza zero); altrimenti `true` |
+| `object` | `true` |
 
 ## Switch
 
-Valuta un espressione, che matcha con il valore della clausola case ed esegue lo stato associato a quel caso
-
+Valuta un espressione, che effettua un match con il valore della clausola case ed esegue lo stato associato a quel caso:
 
 ```
 switch (expression){
@@ -155,7 +150,6 @@ switch (expression){
         // stato eseguito quando nessuno dei valori forniti ha un match con il valore dell'espressione
         [break;]]
 }
-
 ```
 
 ## Operatori di comparazione
@@ -166,23 +160,22 @@ Gli operatori di confronto vengono utilizzati nelle istruzioni logiche per deter
 | --- | --- |
 | == | equal to |
 | === | equal value and equal type |
-| != | not equal |
-| !=== | not equal value or not equal type |
+| != | (inequality) not equal |
+| !== | (strict inequality) not equal value or not equal type |
 | > | greather than |
 | < | less than |
 | >= | greather than or equal to |
 | <= | less than or equal to |
 
-
 ## Operatori ternari
 
-L'operatore condizionale (ternario) è l'unico operatore JavaScript che accetta tre operandi. Questo operatore viene spesso utilizzato come scorciatoia per l'istruzione if.
+L'operatore condizionale (ternario) è l'unico operatore JavaScript che accetta tre operandi. Questo operatore viene spesso utilizzato come scorciatoia per l'istruzione `if`.
 
 `condition ? expr1 : expr2`
 
 ## While
 
-L'istruzione while crea un ciclo che esegue un'istruzione specificata fintanto che la condizione di test restituisce true. La condizione viene valutata prima di eseguire l'istruzione.
+L'istruzione while crea un ciclo che esegue un'istruzione specificata fintanto che la condizione di restituisca true. La condizione viene valutata prima di eseguire l'istruzione.
 
 ```
 while (condition) {
@@ -192,19 +185,21 @@ while (condition) {
 
 ## For
 
-L'istruzione for crea un ciclo costituito da tre espressioni facoltative, racchiuse tra parentesi e separate da punto e virgola, seguite da un'istruzione (solitamente un'istruzione di blocco) da eseguire nel ciclo. Per uscire preventivamente usare `break`. 
+L'istruzione `for` crea un ciclo costituito da tre espressioni facoltative, racchiuse tra parentesi e separate da `;`, seguite da un'istruzione (solitamente un'istruzione di blocco) da eseguire nel ciclo. Per uscire preventivamente usare `break`. 
 
 ```for ([initialization]; [condition]; [final-expression]) statement```
 
-Può creare un loop che itera tutti gli oggetti che sono dentro un iterabile
+Feature: utilizzando `in` o `of` Può creare un loop che itera tutti gli oggetti che sono dentro un iterabile
 
 ```
+// utilizzando in
+
 for (var index in arr){
     console.log(arr[index]);
 }
-```
 
-```
+// utilizzando of
+
 for (var elem of arr){
     console.log(elem);
 }
@@ -213,23 +208,26 @@ for (var elem of arr){
 ## Arrays
 È un oggetto globale usato per la costruzione degli array, che sono ad alto livello come gli oggetti.
 
-`.length` puoi accedere con la notazione `arr[arr.length - 1]` ed usare 
+`.length` puoi accedere con la notazione ed arrivare fino ad per selezionare l'ultimo elemento `arr[arr.length - 1]`
 
-## Funzioni disponibili:
+<b>Utils</b>
 
-```arr.forEach(function (item, index, arr) {
-    //
+```javascript
+arr.forEach(function (item, index, arr) {
+    //logging 'arr[index]' or 'item' gives the same result
 });
 
-.push("Orange"); // aggiunge un elemento
+let anyvalue = "" // number of obj 
+
+.push(anyvalue); // aggiunge un elemento
 .pop(); // remove last element
 .shift(); // remove  from the front
-.unshift("Strawberry") // add to the front
-.push("Mango"); // aggiunge alla fine
-indexOf("Banana"); // ritorna l'index dell'elemento. può essere anche un intero, se non presente ritorna -1
+.unshift(anyvalue) // add to the front
+.push(anyvalue); // aggiunge alla fine
+indexOf(anyvalue); // ritorna l'index dell'elemento. può essere anche un intero, se non presente ritorna -1
 ```
 
-Splice
+<b>Splice</b>
 
 The `splice()` method changes the contents of an array by removing or replacing existing elements and/or adding new elements in place. To access part of an array without modifying it, see `slice()`.
 
@@ -237,41 +235,42 @@ Se applicato ad un array, quest'ultimo viene modificato. Altrimenti ritorna: an 
 - If only one element is removed, an array of one element is returned.
 - If no elements are removed, an empty array is returned.
 
-## Funzioni
+## Functions
 
 La definizione di funzione consiste nell'utilizzo della keyword `function` seguita da:
 - Nome della funzione
 - Lista dei parametri della funzione, chiusi da parentesi e separati da virgole
 - Lo stato JavaScript che definisce la funzione, racchiusa tra parentesi graffe
-- È possibile passare come parametro una funzione
-
-
-Sebbene la dichiarazione di funzione precedente sia sintatticamente un'istruzione, le funzioni possono anche essere create da un'espressione di funzione. Tale funzione può essere anonima; non deve avere un nome.
 
 ```
 // metodo 1:
 function square(number){
     return number * number;
 }
+```
 
+Sebbene la dichiarazione di funzione precedente sia sintatticamente un'istruzione, le funzioni possono anche essere create da un'espressione di funzione. Tale funzione può essere <b>anonima</b>; non deve avere un nome:
+
+```
 // metodo 2:
 var square = function(number) { return number * number; };
 var x = square(4); // x gets the value 16
-
-// possibile anche definire un nome di una funzione per poter essere utilizzata all'interno della funzione stessa (o in un debugger per identificare la funzione in stack)
-
+```
+- È possibile passare come parametro una funzione (possibile anche definire un nome di una funzione per poter essere utilizzata all'interno della funzione stessa (o in un debugger per identificare la funzione in stack)
+```
 var factorial = function fac(n) { return n < 2 ? 1 : n * fac(n - 1); };
 console.log(factorial(3));
-
 ```
 
 ### Arrow functions
-È un'alternativa sintatticamente compatta a un'espressione di funzione regolare, sebbene senza i bind alle keyword `this`, `arguments`, `super` o `new.target`. Le espressioni di funzione freccia non sono adatte come metodi e non possono essere utilizzate come costruttori.
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+È un'alternativa sintatticamente compatta a un'espressione di funzione regolare, sebbene senza i bind alle keyword `this`, `arguments`, `super` o `new.target`. Le espressioni di una arrow function non sono adatte come metodi e non possono essere utilizzate come costruttori.
 
 ```
-
-(param1, param2, ..., paramN) => { statements } (param1, param2, ..., paramN) => expression
-// equivalent to: => { return expression; }
+let pippo = (param1, param2, ..., paramN) => { statements }
+let pluto = (param1, param2, ..., paramN) => expression // eq to: => { return expression; }
 
 // Parentheses are optional when there's only one parameter name:
 (singleParam) => { statements }
@@ -280,38 +279,46 @@ singleParam => { statements }
 // The parameter list for a function with no parameters should be written
 with a pair of parentheses.
 () => { statements }
-
 ```
 
-Prima delle arrow functions, ogni nuova funzione definiva il proprio this
+Prima delle arrow functions, ogni nuova funzione definiva il proprio `this`
 
 - Un nuovo oggetto nel caso di un costruttore
 - `undefined` in `strict` mode function calls
 - L'oggetto di base se la funzione è stata chiamata come "metodo dell'oggetto"
 
-In alternativa, è possibile creare una funzione associata in modo che un valore preassegnato venga passato alla funzione di destinazione associata.
-Una funzione freccia non ha il proprio `this`. Viene utilizzato il valore `this` dell'ambito lessicale di inclusione; le arrow function seguono le normali regole di ricerca delle variabili. Quindi, durante la ricerca di `this` che non è presente nell'ambito corrente, una arrow function finisce per trovare `this` dal suo ambito di inclusione.
+In alternativa, è possibile creare una funzione associata in modo che un valore preassegnato venga passato alla funzione di destinazione associata (con let)
+
+- non ha il proprio `this` (se usato all'interno della funzione ritorna `undefined`). Viene utilizzato il valore `this` dell'ambito lessicale di inclusione; le arrow function seguono le normali regole di ricerca delle variabili. Quindi, durante la ricerca di `this` che non è presente nell'ambito corrente, una arrow function finisce per trovare `this` dal suo ambito di inclusione.
 
 ## Hoisting
 
-L'hoisting è stato pensato come un modo generale di pensare a come funzionano i contesti di esecuzione (in particolare le fasi di creazione ed esecuzione) in JavaScript. Una definizione rigorosa di hoisting suggerisce che le dichiarazioni di variabili e funzioni vengono spostate fisicamente all'inizio del codice, ma in realtà non è ciò che accade. Invece, le dichiarazioni di variabili e funzioni vengono messe in memoria ma rimangono esattamente dove vengono scritte nel codice
+L'hoisting (<i>in inglese hoisting</i>) è stato pensato come un modo generale di pensare a come funzionano i contesti di esecuzione (in particolare le fasi di creazione ed esecuzione) in JavaScript. Una definizione rigorosa di <b>hoisting</b> suggerisce che le dichiarazioni di variabili e funzioni vengono spostate fisicamente all'inizio del codice, ma in realtà non è ciò che accade. Invece, le dichiarazioni di variabili e funzioni vengono messe in memoria ma rimangono esattamente dove vengono scritte nel codice
 
 
 ```
 var stud;
-studentName(stud);
+studentName(stud);  // logs --> My student's name is null
  function studentName(name) {
   console.log("My student's name is " + name);
 }
 stud = "pluto";
-
-print --> My student's name is null
-
+studentName(stud); // logs --> My student's name is pluto
 ```
 
 ## Scope
 
-Le variabili hanno scope a livello di funzione, sono visibili nelle funzioni quando sono definite.
+Le variabili hanno scope a livello di funzione, sono visibili nelle funzioni quando sono definite. RICORDA:
+
+```
+var d = 3
+
+function test(){
+  console.log(d)
+}
+
+test() // logs : 3
+```
 
 ## Closure
 
@@ -365,6 +372,10 @@ person.bio()
 console.log(person.age)
 ```
 
+### Inheritance and prototype chain
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+
 Javascript si basa sull'eredità del prototipo. In Javascript tutto è un Oggetto e ogni Oggetto mantiene un "collegamento" al suo prototipo e questo crea una catena di prototipi in cui gli oggetti possono ereditare comportamenti da altri oggetti. Questo differisce dall'ereditarietà classica in cui si definisce una classe o un design per ogni oggetto e ne si crea un'istanza. È uno dei concetti di basso livello che rende JavaScript un linguaggio multiparadigma molto flessibile.
 
 ```
@@ -377,7 +388,7 @@ console.log(Person.race); //human
 
 ### Bracket notations
 
-Simile al modo in si accede agli elementi in un array: invece di utilizzare un numero di indice per selezionare un elemento, stai usando il nome associato al valore di ciascun membro. Non sorprende che gli oggetti siano talvolta chiamati array associativi: associano le stringhe ai valori nello stesso modo in cui gli array associano i numeri ai valori.
+Simile al modo in si accede agli elementi in un array: invece di utilizzare un numero di indicgetti siano talvolta chiamati array associativi: associano le stringhe ai valorie per selezionare un elemento, stai usando il nome associato al valore di ciascun membro. Non sorprende che gli og nello stesso modo in cui gli array associano i numeri ai valori.
 
 `person['age']` `person["name"][1]`
 
@@ -392,8 +403,11 @@ La sintassi della classe non introduce in JavaScript un nuovo modello di eredita
 ### Document Object Model (DOM)
 
 È un'interfaccia di programmazione per documenti HTML. Rappresenta la pagina in modo che i programmi possano modificare la struttura, lo stile e il contenuto del documento. Il DOM rappresenta il documento come nodi e oggetti. In questo modo, i linguaggi di programmazione possono connettersi alla pagina.
-Ad esempio, il DOM standard specifica che il metodo `getElementsByTagName` nel codice seguente deve restituire un elenco di tutti gli elementi con il relativo nome nel documento: Browser diversi hanno implementazioni diverse del DOM e queste implementazioni mostrano vari gradi di conformità allo standard DOM effettivo, ma ogni browser Web utilizza alcuni modelli di oggetti del documento per rendere accessibili le pagine Web tramite JavaScript.
-Quando crei uno script, sia esso inline in un elemento `<script>` o incluso nella pagina Web tramite un'istruzione di caricamento dello script, puoi iniziare immediatamente a utilizzare l'API `document` o `window` per manipolare il documento stesso o per ottenere ai figli di quel documento, che sono i vari elementi nella pagina web.
+
+Ad esempio, il DOM standard specifica che il metodo `getElementsByTagName` nel codice seguente debba restituire un elenco di tutti gli elementi con il relativo nome nel documento: Browser diversi hanno implementazioni diverse del DOM e queste implementazioni mostrano vari gradi di conformità allo standard DOM effettivo, ma ogni browser Web utilizza alcuni modelli di oggetti del documento per rendere accessibili le pagine Web tramite JavaScript.
+
+Quando crei uno script, sia esso inline in un elemento `<script>` o incluso nella pagina Web tramite un'istruzione di caricamento dello script, è possibile iniziare immediatamente a utilizzare l'API `document` o `window` per manipolare il documento stesso o per ottenere ai figli di quel documento, che sono i vari elementi nella pagina web.
+
 Il seguente JavaScript visualizzerà un avviso quando il documento viene caricato (e quando l'intero DOM è disponibile per l'uso):
 
 `<body onload="window.alert('Page loaded!');">`
@@ -441,17 +455,13 @@ window.scrollTo()
 
 JavaScript è un linguaggio a thread singolo, il che significa che può eseguire solo un'istruzione alla volta, anche se CPU ha più core e thread.
 
-"In che modo JavaScript gestisce i lavori contemporaneamente?". JavaScript ha un modello di concorrenza basato su un ciclo di eventi.
-Quando viene eseguito un codice JavaScript, sulla macchina vengono allocate due regioni di memoria, lo stack di chiamate (una memoria ad alte prestazioni) e l'heap.
-Lo Stack viene utilizzato per eseguire le funzioni e salva una copia frame delle funzioni e una copia delle sue variabili locali.
-L'heap viene utilizzato in una situazione più complessa. È un pool di memoria non strutturato in cui verranno archiviati elementi come oggetti o valori primitivi all'interno delle chiusure, è Garbage Collected, quindi non si gestisce manualmente l'allocazione della memoria o libera memoria.
+"In che modo JavaScript gestisce i lavori contemporaneamente?". JavaScript ha un modello di concorrenza basato su un ciclo di eventi:
+- lo <b>stack</b> di chiamate (una memoria ad alte prestazione) che viene utilizzato per eseguire le funzioni e salva una copia frame delle funzioni e una copia delle sue variabili locali.
+- l'<b>heap</b> viene utilizzato in una situazione più complessa. È un pool di memoria non strutturato in cui verranno archiviati elementi come oggetti o valori primitivi all'interno delle chiusure, è <i>Garbage Collected</i>, quindi non si gestisce manualmente l'allocazione della memoria o libera memoria.
 
-Un runtime JavaScript utilizza una coda di messaggi, che è un elenco di messaggi da elaborare. Ogni messaggio ha una funzione associata che viene chiamata per gestire il messaggio. Il runtime inizia a gestire i messaggi in coda, a partire da quello più vecchio. Il messaggio viene rimosso dalla coda e la relativa funzione viene chiamata con il messaggio come parametro di input. Come sempre, la chiamata di una funzione crea un nuovo stack frame per l'uso di quella funzione. 
-L'elaborazione delle funzioni continua finché lo stack non è nuovamente vuoto. Quindi, il ciclo di eventi elaborerà il messaggio successivo nella coda (se presente).
+Un runtime JavaScript utilizza una <b>coda di messaggi</b>, che è un elenco di messaggi da elaborare. Ogni messaggio ha una funzione associata che viene chiamata per gestire il messaggio. Il runtime inizia a gestire i messaggi in coda, a partire da quello più vecchio. Il messaggio viene rimosso dalla coda e la relativa funzione viene chiamata con il messaggio come parametro di input. Come sempre, la chiamata di una funzione crea un nuovo stack frame per l'uso di quella funzione. L'elaborazione delle funzioni continua finché lo stack non è nuovamente vuoto. Quindi, il ciclo di eventi elaborerà il messaggio successivo nella coda (se presente).
 
-<b>Event Loop</b> si riferisce a una funzionalità implementata dai motori che consentono a JavaScript di scaricare attività su thread separati. Le API del browser e del nodo eseguono attività di lunga durata separatamente dal thread JavaScript principale, quindi accodano una funzione di callback da eseguire sul thread principale al termine dell'attività.
-
-Un event loop può essere usata come una coda di messaggi tra il singolo thread javascript e l'OS
+<b>Event Loop</b> si riferisce a una funzionalità implementata dai motori che consentono a JavaScript di scaricare attività su thread separati. Le API del browser e del nodo eseguono attività di lunga durata separatamente dal thread JavaScript principale, quindi accodano una funzione di callback da eseguire sul thread principale al termine dell'attività. Un event loop può essere usata come una coda di messaggi tra il singolo thread javascript e l'OS
 
 ```
 while (queue.waitForMessage()) {
@@ -459,61 +469,83 @@ while (queue.waitForMessage()) {
 }
 ```
 
-`queue.waitForMessage()` aspetta sincronamente l'arrivo di un messaggio. Ogni messaggio è processato completamente prima che ogni messaggio è processato.
+`queue.waitForMessage()` aspetta sincronamente l'arrivo di un messaggio. Ogni messaggio è processato completamente prima che ogni messaggio sia processato:
+- Ogni messaggio è processato completamente prima che ogni messaggio sia processato;
+- Se un messaggio impiega troppo tempo per essere complicato, l'applicazione non è capace di processare le interazioni dell'utente come i click o lo scroll. Un browser ritorna il messaggio `a script is taking too long to run`.
 
-- Ogni messaggio è processato completamente prima che ogni messaggio sia processato
-- Se un messaggio impiega troppo tempo per essere complicato, l'applicazione non è capace di processare le interazioni dell'utente come i click o lo scroll. Un browser ritorna il messaggio `a script is taking too long to run`
-
-Una proprietà molto interessante del modello del ciclo di eventi è che JavaScript, a differenza di molti altri linguaggi, non si blocca mai. La gestione dell'I/O viene in genere eseguita tramite eventi e callback, quindi quando l'applicazione è in attesa della restituzione di una query IndexedDB o di una richiesta XHR, può comunque elaborare altre cose come l'input dell'utente.
-Esistono eccezioni legacy come avviso o XHR sincrono, ma è considerata una buona pratica evitarle.
-
-Una proprietà molto interessante del modello a loop di eventi è che JavaScript, a differenza di molti altri linguaggi, non si blocca mai. La gestione dell'I/O viene in genere eseguita tramite eventi e callback, quindi quando l'applicazione è in attesa della restituzione di una query IndexedDB o di una richiesta XHR, può comunque elaborare altre cose come l'input dell'utente. Esistono eccezioni legacy come avviso o XHR sincrono, ma è considerata una buona pratica evitarle.
+Una proprietà molto interessante del modello a <b>loop di eventi</b> è che JavaScript, a differenza di molti altri linguaggi, non si blocca mai. La gestione dell'I/O viene in genere eseguita tramite eventi e callback, quindi quando l'applicazione è in attesa della restituzione di una query IndexedDB o di una richiesta `XHR`, può comunque elaborare altre cose come l'input dell'utente. Esistono eccezioni legacy come avviso (???) o `XHR` sincrono, ma è considerata una buona pratica evitarle.
 
 Tre modi per registrare degli eventi su un elemento DOM
 
-Usare la funzione `addEventListener` che aggiungerà una funzione ogni volta che lo specifico evento è portato al target
+1. Usare la funzione `addEventListener` che aggiungerà una funzione ogni volta che lo specifico evento è portato al target
 
 ```
 myButton.addEventListener('click', greet);
 ```
 
-Usare l'attributo. Questo modo dovrebbe essere evitato, perché renderebbe il markup più grande e meno leggibile, un bug sarà più difficile da trovare ad esempio
+2. Usare l'attributo. Questo modo dovrebbe essere evitato, perché renderebbe il markup più grande e meno leggibile, un bug sarà più difficile da trovare ad esempio
 
 `<button onclick="alert('Hello world')">`
 
-Usare l'elemento `event function`. Il problema con questo metodo è che solo un handler può essere settato per elemento ed evento
+3. Usare l'elemento `event function`. Il problema con questo metodo è che solo un handler può essere settato per elemento ed evento
 
 `myButton.onclick = function(event){alert('Hello world');};`
 
 ## Asincrono
 
-Per permetterci di capire cos'è JavaScript asincrono, dovremmo iniziare da
-assicurandoci di capire cos'è JavaScript sincrono.
 Molte delle funzionalità che abbiamo esaminato nei precedenti moduli dell'area di apprendimento sono sincrone con l'esecuzione del codice e il risultato viene restituito non appena il browser può farlo.
-Durante l'elaborazione di ogni operazione, non può accadere nient'altro/il rendering viene sospeso. Questo perché, JavaScript è a thread singolo. Può succedere solo una cosa alla volta, su un singolo thread principale, e tutto il resto viene bloccato fino al completamento di un'operazione.
-Per questi motivi, molte funzionalità dell'API Web ora utilizzano codice asincrono per l'esecuzione, in particolare quelli che accedono o recuperano un qualche tipo di risorsa da un dispositivo esterno, come il recupero di un file dalla rete, l'accesso a un database e la restituzione di dati da esso, l'accesso a un streaming video da una webcam o trasmettere il display a un visore VR.
-Esistono due tipi principali di stile di codice asincrono che incontrerai nel codice JavaScript, le callback vecchio stile, promise, e le più recente stile async/await.
+Durante l'elaborazione di ogni operazione, non può accadere nient'altro il rendering viene sospeso. Questo perché, JavaScript è a thread singolo: può succedere solo una cosa alla volta, su un singolo thread principale, e tutto il resto viene bloccato fino al completamento di un'operazione.
+<i>Per questi motivi, molte funzionalità dell'API Web ora utilizzano codice asincrono per l'esecuzione, in particolare quelli che accedono o recuperano un qualche tipo di risorsa da un dispositivo esterno, come il recupero di un file dalla rete, l'accesso a un database e la restituzione di dati da esso, l'accesso a un streaming video da una webcam o trasmettere il display a un visore VR.</i>
+Esistono due tipi principali di stile di codice asincrono:
+    - le callback vecchio stile, promise,
+    - le più recente stile async/await.
 
 ### Asynchronous callbacks
 
-Le callback asincrone sono funzioni specificate come argomenti quando si chiama una funzione che avvierà l'esecuzione del codice in background. Al termine dell'esecuzione del codice in background, chiama la funzione di callback per informare che il lavoro è terminato o per far sapere che è successo qualcosa di interessante.
+https://dhis2-app-course.ifi.uio.no/learn/javascript/async/callbacks/
+
+Le callback asincrone sono funzioni specifiche come argomenti quando si chiama una funzione che avvierà l'esecuzione del codice in background. Al termine dell'esecuzione del codice in background, chiama la funzione di callback per informare che il lavoro è terminato o per far sapere che è successo qualcosa di interessante.
 Ad esempio il secondo parametro `addEventListener()` è un esempio di callback asincrona
-Il primo parametro è il tipo di evento da ascoltare e il secondo parametro è una funzione di callback che viene richiamata quando l'evento viene generato.
-Quando si passa una funzione di callback come argomento a un'altra funzione, si passa solo il riferimento della funzione come argomento, ovvero la funzione di callback non viene eseguita immediatamente.
-Viene "richiamato" (da cui il nome) in modo asincrono da qualche parte all'interno del corpo della funzione che lo contiene. La funzione contenitore è responsabile dell'esecuzione della funzione di callback quando arriva il momento.
+Il primo parametro è il tipo di evento da ascoltare e il secondo parametro è una funzione di callback che viene richiamata quando l'evento viene generato. Quando si passa una funzione di callback come argomento a un'altra funzione, si passa solo il riferimento della funzione come argomento, ovvero la funzione di callback non viene eseguita immediatamente. Viene "richiamato" (da cui il nome) in modo asincrono da qualche parte all'interno del corpo della funzione che lo contiene. La funzione contenitore è responsabile dell'esecuzione della funzione di callback quando arriva il momento.
+
+Synchronous callbacks
+
+```
+const arr = [1, 2, 3]
+const doubler = x => x * 2
+const doubled = arr.map(doubler)
+```
+
+<p style="font-size: 10px">
+Here we pass the function doubler to the map method. map does not do anything in the background, and the function we pass is therefore also classified as a synchronous callback. But the syntax of asynchronous and synchronous callbacks is identical. Whether the function is used in an asynchronous or synchronous manner depends on the function or method it's passed to.
+</p>
+
+
+Asynchronous callbacks
+
+```
+const addButton = document.querySelector("#add")
+addButton.addEventListener("click", () => {
+  console.log("You clicked #addButton")
+})
+```
+<p style="font-size: 10px">
+The addEventListener method attaches an event handler to a DOM element. The details of this method is not important here; all we need to know is that the second parameter is treated as an asynchronous callback function which is only executed when the particular event is triggered on the target node. So, in this case, the async callback function is called every time we click on the #add element.
+</p>
 
 ### Asynchronous promises
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
 Le promises sono il nuovo stile di codice asincrono che vedrai utilizzato nelle moderne API Web. 
 
-Un promise è un proxy per un valore non necessariamente noto al momento della creazione della promessa. Consente di associare gli handlers all'eventuale valore di successo o al motivo dell'errore di un'azione asincrona. Ciò consente ai metodi asincroni di restituire valori come i metodi sincroni: invece di restituire immediatamente il valore finale, il metodo asincrono restituisce una promessa di fornire il valore in futuro.
-Una promises è in uno di questi stati:
+Un promise è un proxy per un valore non necessariamente noto al momento della creazione della promessa. Consente di associare gli handlers all'eventuale valore di successo o al motivo dell'errore di un'azione asincrona. Ciò consente ai metodi asincroni di restituire valori come i metodi sincroni: invece di restituire immediatamente il valore finale, il metodo asincrono restituisce una <i>promessa</i> di fornire il valore in futuro. Una promises puo essere in uno di questi stati:
 - in sospeso (pending): stato iniziale, né soddisfatto né rifiutato.
 - adempiuto (fullfilled): significa che l'operazione si è conclusa con successo.
 - rifiutato (rejected): significa che l'operazione è fallita.
-Una promessa in sospeso può essere rispettata con un valore o rifiutata con un motivo (errore). Quando si verifica una di queste opzioni, vengono chiamati i gestori associati accodati dal metodo then di una promessa. Se la promise è già stata soddisfatta o rifiutata quando viene collegato un gestore corrispondente, verrà chiamato il gestore, quindi non esiste alcuna condizione di competizione tra il completamento di un'operazione asincrona e il collegamento dei relativi gestori.
-Poiché i metodi `Promise.prototype.then()` e `Promise.prototype.catch()` restituiscono promesse, possono essere concatenati.
-I metodi `promise.then()`, `promise.catch()` e `promise.finally()` vengono utilizzati per associare ulteriori azioni a una promessa che viene stabilita.
+Una promessa in sospeso può essere rispettata con un valore o rifiutata con un motivo (errore). Quando si verifica una di queste opzioni, vengono chiamati gli handler associati accodati dal metodo `then` di una promise. Se la promise è già stata soddisfatta o rifiutata quando viene collegato un <i>handler</i> (gestore) corrispondente, verrà chiamato il gestore, quindi non esiste alcuna condizione di competizione tra il completamento di un'operazione asincrona e il collegamento dei relativi gestori.
+
+Poiché i metodi `Promise.prototype.then()` e `Promise.prototype.catch()` restituiscono promesse, possono essere concatenati. I metodi `promise.then()`, `promise.catch()` e `promise.finally()` vengono utilizzati per associare ulteriori azioni a una promessa che viene stabilita.
 
 Il metodo `then()` il metodo richiede fino a due argomenti; il primo argomento è una funzione di callback per il caso risolto della promise e il secondo argomento è una funzione di callback per il caso rifiutato. Ciascun `.then()` restituisce un oggetto promise appena generato, che può essere utilizzato facoltativamente per il concatenamento.
 
@@ -541,18 +573,18 @@ myPromise
         .catch(handleRejectedAny)
 ```
 
-La condizione di cessazione di una promessa determina lo stato "regolato" della prossima promessa nella catena. Uno stato "risolto" indica un completamento con successo della promessa, mentre uno stato "rifiutato" indica una mancanza di successo. Il valore di ritorno di ogni promessa risolta nella catena viene passato al successivo .then(), mentre il motivo del rifiuto viene passato alla successiva funzione di gestione del rifiuto nella catena. Le promise di una catena sono annidate come bambole russe, ma vengono fatte aperte come la cima di una pila. La prima promessa della catena è più profondamente nidificata ed è la prima a spuntare.
+La condizione di cessazione di una promessa determina lo stato "regolato" della prossima promessa nella catena. Uno stato "risolto" indica un completamento con successo della promessa, mentre uno stato "rifiutato" indica una mancanza di successo. Il valore di ritorno di ogni promessa risolta nella catena viene passato al successivo `.then()`, mentre il motivo del rifiuto viene passato alla successiva funzione di gestione del rifiuto nella catena. Le promise di una catena sono annidate come bambole russe, ma vengono fatte aperte come la cima di una pila. La prima promessa della catena è più profondamente nidificata ed è la prima a spuntare.
 
 ### Async / await
 
-Aggiunte più recenti al linguaggio JavaScript sono le funzioni asincrone e la parola chiave `await`. Queste funzionalità fondamentalmente agiscono come zucchero sintattico in aggiunta alle promesse, rendendo il codice asincrono più facile da scrivere e da leggere in seguito. Rendono il codice asincrono più simile al codice sincrono della vecchia scuola, quindi vale la pena impararli. Prima di tutto abbiamo la parola chiave `async`, che metti davanti a una dichiarazione di funzione per trasformarla in una funzione asincrona. Una funzione asincrona è una funzione che sa come aspettarsi la possibilità che la parola chiave `await` venga utilizzata per invocare codice asincrono.
+Aggiunte più recenti al linguaggio JavaScript sono le funzioni asincrone e la parola chiave `await`. Queste funzionalità fondamentalmente agiscono come zucchero sintattico in aggiunta alle promesse, rendendo il codice asincrono più facile da scrivere e da leggere in seguito. Prima di tutto abbiamo la parola chiave `async`, che metti davanti a una dichiarazione di funzione per trasformarla in una funzione asincrona. Una funzione asincrona è una funzione che sa come aspettarsi la possibilità che la parola chiave `await` venga utilizzata per invocare codice asincrono.
 
 ```
 async function hello() { return "Hello" };
-hello();
+hello(); // returns a Promise
 //or
 let hello = async function() { return "Hello" };
-hello();
+hello(); // returns a Promise
 ```
 
 Invocare la funzione ora restituisce una promessa. Questo è uno dei tratti delle funzioni asincrone, i loro valori restituiti sono garantiti per essere convertiti in promesse.
@@ -568,21 +600,19 @@ async function hello() {
 hello().then(alert)
 ```
 
-Puoi usare `await` quando chiami qualsiasi funzione che restituisce una promessa, incluse le funzioni dell'API Web e all'interno di un'altra funzione asincrona e se necessario gestire gli errori aggiungere try/catch con async/await.
+Puoi usare `await` quando chiami qualsiasi funzione che restituisce una promise, incluse le funzioni dell'API Web e all'interno di un'altra funzione asincrona e se necessario gestire gli errori aggiungere try/catch con async/await.
 
 ## HTTP Request
 
-Sembra un po' come segue: il tuo browser invia una richiesta, attende goffamente che il server risponda alla richiesta e (una volta che il server risponde) elabora la richiesta.
-Tutta questa comunicazione è resa possibile grazie a qualcosa noto come protocollo HTTP. Normalmente, questo approccio è sincrono.
+Il browser invia una richiesta, attende che il server risponda alla richiesta e (una volta che il server risponde) elabora la richiesta. Tutta questa comunicazione è resa possibile grazie a qualcosa noto come protocollo HTTP. Normalmente, questo approccio è sincrono.
 
 ### Ajax
 
-Ajax (JavaScript asincrono e XML) è il modo tradizionale per effettuare una richiesta HTTP asincrona. I dati possono essere inviati utilizzando il metodo HTTP POST e ricevuti utilizzando il metodo HTTP GET.
+Ajax (JavaScript asincrono e XML) è il modo tradizionale per effettuare una richiesta HTTP <u>asincrona</u>. I dati possono essere inviati utilizzando il metodo HTTP POST e ricevuti utilizzando il metodo HTTP GET.
 
 1. Per effettuare una chiamata HTTP in Ajax, ha la necessità di inizializzare un nuovo metodo `XMLHttpRequest()`, nello specifico l'endopoint dell'URL e il metodo HTTP.
 2. Alla fine, usiamo il metodo `open()` insieme al metodo ed all'URL
 3. Loggiamo la risposta dell'HTPP sulla console usando `XMLHTTPRequest.onreadystatechange` property che contiene l'event handler da essere chiamato quando l'evento `readystatechanged` è eseguito. On `readystatechange`properties ha due valori, `readyState`e `status`che ci permette per controllare lo stato della nostra richiesta. Se `readyState` è uguale a 4, significa che la richiesta è fatta. Se la proprietà `readyState` ha 5 risposte.
-
 
 ```
 const http = new XMLHttpRequest();
@@ -597,7 +627,6 @@ http.onreadystatechange = function(e){
 //send the request
 http.send();
 ```
-
 
 ### Fetch
 
