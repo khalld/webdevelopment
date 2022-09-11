@@ -19,7 +19,260 @@ Con URLs e verbs, i client può inizializzare una richiesta al server. In ritorn
 - 4XX: client error messages
 - 5XX: server error messages
 
+<div style="page-break-after: always;"></div>
+
 # HTML
+
+Linguaggio di markup (standard) per creare pagine web. <b>Non è</b> un linguaggio di programmazione, non ha i costrutti dei linguaggi di programmazione. Descrive la struttura di pagine web con elementi rappresentati da `<tags>`. L'obbiettivo di un browser web è quello di leggere documenti HTML e visualizzarli.
+
+<b>Project folder:</b> un progetto html ha la seguente struttura
+
+```
+project_folder   
+│
+└───assets
+│   │   
+│   │
+│   └───css
+│   |   │   file1.css
+│   |   │   ...
+|   |
+│   └───js
+|   |   |   file1.js
+|   |   |   ...
+│   └───img
+|       |   ...
+|       |
+└   index.html
+```
+
+La dichiarazione `<!DOCTYPE>` rappresenta il tipo del documento, aiuta i browser a mostrare le pagine web correttamente
+HTML 4.01 `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">`
+HTML 5 `<!DOCTYPE html>`
+
+Struttura pagina HTML:
+```HTML
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title here!</title>
+    <!-- META INFO --> 
+    </head>
+    <body>
+    <!-- ELEMENTS HERE -->
+    </body>
+</html>
+```
+Tutti i nodi dell'albero sono da considerare come elementi html. Se un elemento contiene altri elementi, finisce con un tag di chiusura dove il nome dell'elemento è preceduto da uno slash `/`. Un elemento HTML può essere `block` o `inline`.
+
+![alt text](images/block-inline.jpeg)
+
+## Elementi inline
+Non inizia su una nuova riga, occupano solo la larghezza necessaria
+
+```HTML
+<span>some text</span>
+<b>bold text</b>
+<i>Italic</i>
+<small>small text</small>
+<a href="">link</a>
+```
+
+## Elementi block
+Inizia sempre su una nuova riga e i browser aggiungono automaticamente dello spazio (un margine) prima e dopo l'elemento. Occupa sempre l'intera largheza disponibile (si estende a sinistra e a destra il più possibile)
+
+```HTML
+<p>some text</p>
+<div>Container</div>
+<h6>Small text</h6>
+<h2>Some text</h2>
+<ul>Italic!</ul>
+```
+
+## Elementi void
+
+Vi sono alcuni elementi HTML che non hano bisogno di essere chiusi (possono comunque avere attributi).
+
+`<br /> <hr /> <img /> <input />`
+
+Vi sono anche area, base, col, command, hr, keygen, link, meta, param, source, track, wbr.
+
+## Element attributes
+
+Un attributo è usato per definire le caratteristiche di un elemento HTML ed è posto dentro il tag di apertura dell'elemento. Tutti gli attributi sono formati da due parti `key="value"`. Vi sono i totali quattro attributi che possono essere usati in tutti gli elementi HTML (nativi), altri elementi hanno i propri attributi
+
+- ID: unico identificatore di un elemento HTML
+- Class: group HTML element identifier
+- Style: define some style inlne
+- Title: description, this will display in a tooltip
+
+## Hyperlinks
+
+Permettono ai visitatore di lavorare tra pagine web cliccando su parole, immagini, frasi. È un elmento <u>inline</u>.
+
+`<a [attributes]>...</a>`
+
+- `href`definisce l'URL del documento
+- `target` questo attributo è usato per specificare la posizione del documento che sarà aperto:
+    - `_self`: default. Carica il documento nello stesso context
+    - `_blank`: carica il documento in una nuova finestra o tab del browser
+    - `_parents`: carica il documento nel context/frame di navigazione padre, se presente, o nello stesso contesto di navigazione se non esiste un elemento padre
+    - `_top`: carica il documento nel context/riquadro di nagiazione più in alto se c'è qualcuno, o nello stesso contesto di navigazione se non c'è un genitore
+
+- È possibile creare un link per una particolare sezione della webpage utilizzando `id`o `name` dopo `href` con un `#` davanti
+
+```HTML
+<a href=”#test”>Click here</a>
+…
+…
+…
+<p id=”test”>Hello!</p>
+```
+
+## Images
+
+Le immagini sono definite dal tag `<img>`, è un tag void che contiene solo attributi e non ha un tag di chiusura
+
+`<img [ATTRIBUTES />`
+
+- `src`: definisce l'URL dell'immagine (PNG,JPG,GIF,SVG) o una stringa base64;
+- `alt`: attributo alt fornisce un testo per l'immagine
+- `width`: definisce la larghezza
+- `height:` definisce l'altezza
+
+## Tables
+
+Le tabelle HTML solo state create per rappresentare dati, successivamente sono stante anche utilizzate (non più) per gestire la struttura delle pagine web. Per ogni tabella bisogna assegnare un’unica `<table>`. Poi per ogni riga che si vuole creare devi racchiudere tra `<tr>`. Per ogni colonna che vuoi fare devi mettere `th` per l’header o `td` per le righe normali
+
+- `table` con chiusura
+- `tr` table row
+- `th` table header
+    - Per fare si che la cella abbia un intervallo:
+        - con più di una colonna basta usare l'attributo `colspan="numero"`
+        ```HTML
+        <table style="width:100%">
+            <tr>
+                <th colspan="2">Name</th>
+                <th>Age</th>
+            </tr>
+            <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>43</td>
+            </tr>
+            <tr>
+                <td>Eve</td>
+                <td>Jackson</td>
+                <td>57</td>
+            </tr>
+        </table>
+        ```
+        - con più di una colonna basta usare l'attributo `rowspan="numero"`
+        ```HTML
+        <table style="width:100%">
+            <tr>
+                <th>Name</th>
+                <td>Jill</td>
+            </tr>
+            <tr>
+                <th rowspan="2">Phone</th>
+                <td>555-1234</td>
+            </tr>
+            <tr>
+                <td>555-8745</td>
+            </tr>
+        </table>
+        ```
+- `td` table data
+
+## Lists
+
+Permette di fare una lista di vari elementi. Sono elementi di tipo `block`. Due tipi:
+    - unordered list (non ordinata) `<ul>`
+    - ordered list (ordinata) `<ol>`
+Ogni elemento della lista è un block element `<li>`
+
+## DIVisor
+Il tag `div`definisce una divisione o una sezione in un documento HTML, è un elemento di tipo block. È usato spesso con il CSS per dare un layout a una pagina web (invece di tables)
+
+`<div> <!-- elements --> </div>`
+
+## Forms
+
+L'elemento form definisce un form usato per collezionare input da parte degli utenti. 
+- possono avere diversi tipi di elementi di input come text fields, checkboxes, radio buttons, submit buttons ed altri;
+- l'azione degli attributi definisce l'azione da eseguire quando il form è 'submitted'
+- normalmente i dati del form sono inviati ad una web page su unserver quando l'utente clicca sul bottone di submit
+- l'attributo `method` spefica il metodo http da essere utilizzando quando viene fatto il submit dei dati
+    - `GET`: metodo di default, quando viene usato nel campo di indirizzo saranno visibili i campi della pagina (limite 255 caratteri). Non deve essere utilizzato per inviare informazioni sensibili;
+    - `POST`: da usare quando vengono inviate informazioni sensibili. Non visualizza i dati nel campo indirizzo, né ha dei limiti per la dimensione dei dati
+
+```HTML
+<form action="http://..." method="get or post">
+    <!-- form elements -->
+</form>
+```
+
+### Inputs
+
+L'elemento `<input>` è il più importante elemento form e può essere visualizzato in diversi modi, in base al tipo dell'attributo.
+
+`<input type=”{TYPES}” name=”{NAME OF KEY}” [OTHER ATTRIBUTES] />`
+
+Ogni campo deve vere il nome di un attributo per essere inviato e definisce il nome della chiave (o variabile). Se l'attributo name è omesso, i dati del campo di input non saranno inviati. 
+
+#### Attributi
+- `type` può avere diversi valori, quali: `text`, `password`, `email`, `number. I controlli di email e number sono forzati dal browser (quindi possono essere modificati !!)
+- `value` il valore iniziale del campo di input
+- `readonly` (attributo void) specifica che l'input non può essere cambiato
+- `disabled` (attr. void) specifica che il campo di input è disabilitato. È inutilizzabilie, non cliccabile ed il suo valore non sarà inviato quando viene effettuato il submit di un form
+- `maxlength` specifica la massima lunghezza del campo di input
+- `placeholder` una hint che descrive il valore aspettato dal campo
+- `min|max` minimum and maximum value (type `number`)
+
+### Textarea
+
+Per creare degli input multi linea
+
+```HTML
+<textarea name="sampletextarea" rows="10" cols="50">
+...
+</textarea>
+```
+
+- ha tutti gli attributi di `input`
+- l'attributo rows definisce il numero di linee visibili
+- l'attributo cols definisce definisce la larghezza visibile del controllo di testo, nella larghezza media dei caratteri.
+
+### Checkbox
+
+Renderizzati di default come quadrati che sono segnati (ticked) quando attivi. Permettono di selezionare più di un valore (o no) nel form. `checked` è usato per pre-selezionare l'input
+
+`<input type="checkbox" name="nameoflist" value="val" checked> `
+
+### Radios
+
+Renderizzati di default come bottoni circolari che sono segnati (ticked) quando attivi. Permette di selezionare solo un valore in un form con lo stesso name attribute
+
+`<input type="radio" name="nameoflist" value="val" checked> `
+
+### Select
+
+Permette di selezionare da un menu di opzioni. L'attributo `multiple` (void) permette di selezionare più di un valore nella lista
+
+```HTML
+<select name="select">
+    <option value="1">value 1</option>
+    <option value="1">value 2</option>
+</select>
+```
+
+### Button
+
+Il tag button definisce un bottone cliccabile. Dentro un elemento button è possibile inserire contenuto come testo o immagini. Questa è la differenza tra questo elemento e altri bottoni creati con l'elemento `<input>`
+
+`<button [ATTRIBUTES]> Click me [OR OTHER HTML]</button>`
+
 
 # CSS
 
@@ -1204,10 +1457,10 @@ let input = <HTMLInputElement>document.querySelector('...');
 
 # Frontend
 
-Nel front-end risiedono tutte le cose visualizzabbili sulla web application. Per esempio, le immagini i bottoni e tutti gli altri elementi grafici e le interazioni con l'utente finale. Tecnologie:
-- HTML: linguaggio di markup utilizzato per definire la struttura del documento HTML
-- CSS: cascade language utilizzato per definire regole, stile e behaviors di elementi htm
-- JS & TS: linguaggio di programmazione usati per l'iterazione con l'utente e la applicaiton logic
+Nel front-end risiede l'interfaccia della web application come le immagini i bottoni e tutti gli altri elementi grafici e le interazioni con l'utente finale. Tecnologie usate:
+- <b>HTML</b>: linguaggio di markup utilizzato per definire la struttura del documento HTML
+- <b>CSS</b>: cascade language utilizzato per definire regole, stile e behaviors di elementi htm
+- <b>JS & TS</b>: linguaggio di programmazione usati per l'iterazione con l'utente e la application logic
 
 Utilizzare il DOM può essere ripetitivo e difficile da gestire, per semplificare ciò basta utilizzare un framework Javascript. In questo modo è possibile evitare di gestire il DOM direttamente:
 
@@ -1218,19 +1471,20 @@ Utilizzare il DOM può essere ripetitivo e difficile da gestire, per semplificar
 - Solid.js: compila JS, no virtual DOM, alte performance
 - Alpine.js: usa JS con l'HTML, estende l'html, leggero
 
-Tutti i framework di FE, Javascript e Typescript non hanno molte features di tutti i linguaggi di programmazione, come ad esempio l'abilità di divedere il codice in diversi file ed organizzare il codice. Per risolvere questo problema bisogna utilizzare un budler che organizza un sett di file sorgenti in un singolo file
+Tutti i framework di FE, Javascript e Typescript non hanno molte features che hanno molti linguaggi di programmazione, come l'abilità di divedere il codice in diversi file ed organizzare il codice. Per risolvere questo problema bisogna utilizzare un <b>bundler</b> che organizza un set di file sorgenti in un singolo file:
 
-- Webpack: long-term caching mecanism, code splitting and lazy loading, handles the dependecies automatically
-- Rollup: aiuta l'ottimizzazione di applicazioni, supporta tree-shaking e scope-hoisting, offre più elasticità
-- Snowpack: builda le dipendenze una volta sola, alte performance, supporta lazy loading
+- <b>Webpack</b>: long-term caching mecanism, code splitting and lazy loading, handles the dependecies automatically
+- <b>Rollup</b>: aiuta l'ottimizzazione di applicazioni, supporta tree-shaking e scope-hoisting, offre più elasticità
+    - Tree-shaking is the process of analyzing the code files that are required to run your application and then including only code that is actually used by your application.
+- <b>Snowpack</b>: builda le dipendenze una volta sola, alte performance, supporta lazy loading (tecnica usata sulle pagine web per velocizzarne il caricamento. Questa soluzione si basa su un principio: ottenere il contenuto più pesante come le immagini e i video quando servono. Senza appesantire i tempi necessari per mostrare la prima parte della pagina)
 
-CSS come linguaggio ha gli stessi problemi di js. È difficile organizzare il docie in file diversi ed a CSS mancano molte feature utili. Successivamente possiamo usare il bundler per il CSS, chiamati preprocessors:
+CSS come linguaggio ha gli stessi problemi di JS. È difficile organizzare il codice in file diversi ed a CSS mancano molte feature utili, per risolvere questi problemi possiamo usare un bundler, chiamati preprocessors:
 
 - SASS: organizza il css in diversi file, migliora il CSS, logica condizionale
 - Less: libreria js, non ha logica condizionale, offre funzioni già create
 - Stylus: combinazione di SASS e Less, logica condizionale e postfix conditional, support all mixins.
 
-I preprocessors CSS e JS sono anche utilizzati per sviluppare un set di stili, funzionalità e widget pronti per essere utilizzati in una web application. Questi sono chiamati framework CSS, sono di base un insieme di codici JS e CSS che risolvono problemi comuni e permettono di salvare molto tempo
+I preprocessors CSS e JS sono anche utilizzati per sviluppare un set di stili, funzionalità e widget pronti per essere utilizzati in una web application. Questi sono chiamati framework CSS, sono di base un insieme di codici JS e CSS che risolvono problemi comuni e permettono di salvare molto tempo:
 
 - Bootstrap: più popolare, fully-feature, mature and customizable
 - Foundation: mobile first, generic style, email design and animations
@@ -1239,49 +1493,53 @@ I preprocessors CSS e JS sono anche utilizzati per sviluppare un set di stili, f
 
 # Backend
 
-Ogni computer che è connesso ad internet può inviare messaggi attraverso internet ad un altro computer. Il computer che invia il messaggio è chiamato Client ed il computer che lo riceve è detto Server. Prima che ciò accada, il computer non può ricevere messaggi di default, bisogna che sia in grado di ricevere messaggi. La maggiorparte dei linguaggi di programmazione ha delle caratteristiche per fare diventare un computer un server e permettere di ricevere messaggi. Tra gli aspetti legati a reti di computer, vi sono anche le porte socket. Nonostante il supporto di molti linguaggi di programmazione, è difficile scrivere dei back-end da zero, di conseguenza si utilizzano vari framework.
+Ogni computer che è connesso ad internet può inviare messaggi attraverso internet ad un altro computer:
+    - <b>Client</b> il computer che invia un messaggio,
+    - <b>Server</b> il computer che riceve un messaggio.
 
-I packages, sono di solito liberie per semplificare lo sviluppo che prendono il vantaggio di soluzioni già scelte, come performare calcoli matematici, connessioni a database o gestire autenticazioni di utenti. Per installare questi packages si utilizzando dei package manager (npm per js, maven per java, composer per php ...)
+Tuttavia, il pc non può ricevere messaggi di default, bisogna che sia in grado di ricevere messaggi. La maggiorparte dei linguaggi di programmazione ha delle caratteristiche per fare diventare un computer un server e permettere di ricevere messaggi. Tra gli aspetti legati a reti di computer, vi sono anche le <b>porte socket</b>. Nonostante il supporto di molti linguaggi di programmazione, è difficile scrivere dei back-end da zero, di conseguenza si utilizzano dei framework.
 
-Un database aiuta a salvare e gestire i dati, è solo un pezzo di software che solitamente è runnato in un computer diverso e bisogna effettuare dei setup nel backend per comunicare con il database.
+I <b>packages</b>, sono di solito liberie per semplificare lo sviluppo che prendono il vantaggio di soluzioni già scelte, come performare calcoli matematici, connessioni a database o gestire l'autenticazione di utenti. Per installare questi packages si utilizzando dei package manager (`npm` per js, `maven` per java, `composer` per php ...). Un database aiuta a salvare e gestire i dati, solitamente è runnato in un computer diverso e bisogna effettuare dei setup nel backend per comunicare con quest'ultimo.
 
-- Mysql: database relazione, singolo processo, made for high volumes of read
-- PostfreSQL: object relational db, multi process, for high volume I/O
-- MongoDB: JSON document db, distribuito, per dati non strutturati
+- <b>Mysql</b>: database relazione, singolo processo, made for high volumes of read;
+- <b>PostgreSQL</b>: object relational db, multi process, for high volume I/O;
+- <b>MongoDB</b>: JSON document db, distribuito, per dati non strutturati.
 
-La lista di diversi tipi di richieste permesse nel backend è chiamata API (Application Programming interface) e sono uno dei concetti più importanti nel be. QUesti permettono agli altri linguaggi di comunicaer tra loro.
+Una lista di diversi tipi di richieste permesse nel backend è chiamata API (Application Programming interface) e sono uno dei concetti più importanti nel BE. Questi permettono agli altri linguaggi di comunicare tra loro:
 
 ```
-app.post("/orders", (request, response) => { const order = new Order(request); database.save(order); response.send("Order saved"); })
+app.post("/orders", (request, response) => { 
+    const order = new Order(request); 
+    database.save(order);
+    response.send("Order saved");
+})
 
-app.get("/orders", (request, response) => { const orders = database.getOrders(); response.json(orders); })
+app.get("/orders", (request, response) => { 
+    const orders = database.getOrders();
+    response.json(orders);
+})
 
-app.delete("/orders/:id", (request, response) => { database.deleteOrder(request); response.send("Order deleted"); })
+app.delete("/orders/:id", (request, response) => {
+    database.deleteOrder(request);
+    response.send("Order deleted");
+})
 ```
 
-Per convenzione vengono chiamate REST (REpresentational State Transfer). In REST il tipo di richiesta ha un significato speciale. Un API che usa le REST naming convention è chiamata REST API, non è un protocollo ma una architettura.
+Per convenzione vengono chiamate REST (<b>REpresentational State Transfer</b>). In REST il tipo di richiesta ha un significato speciale: un' API che usa le REST naming convention è chiamata REST API, non è un protocollo ma una architettura.
 
 ## Infrastruttura
 
-Al giorno d'oggi, invece di acquistare i propri computer per eseguire le proprie applicazioni web, le aziende noleggiano computer da una società di cloud computing.
+![alt text](images/iaas-paas-saas-diagram.png)
 
-L'idea di base del cloud computing è che stai noleggiando un sacco di computer. Questo è anche noto come IaaS (Infrastructure as a Service). Dietro le quinte, queste aziende hanno un computer gigante e potente e all'interno del suo software sono in esecuzione molti computer più piccoli e stiamo noleggiando uno di questi computer più piccoli. Questi computer più piccoli esistono solo nel software, quindi chiamiamo il tema Macchine virtuali (o vms). Tipicamente, questi sono gestiti da un hypervisor (suchash kvm o qemu) tramite alcuni strumenti (VMWare, Proxmox, Openstack).
+L'idea di base del cloud computing è il noleggio di molti di computer. Questo è anche noto come <b>IaaS</b> (Infrastructure as a Service). Dietro le quinte, queste aziende hanno un computer gigante e potente e all'interno del suo software sono in esecuzione molte Macchine virtuali (o vms). Tipicamente, questi sono gestiti da un hypervisor (suchash kvm o qemu) tramite alcuni strumenti (VMWare, Proxmox, Openstack). Quindi, per eseguire un'applicazione Web, basta una macchina virtuale da una società cloud per eseguire il nostro back-end ed un database (separato)
 
-Quindi, per eseguire un'applicazione Web, affittiamo una macchina virtuale da una società cloud per eseguire il nostro back-end e affittiamo anche un'altra macchina virtuale per eseguire il nostro database.
-
-Un altro problema che dobbiamo risolvere è che cosa succede se la nostra applicazione web diventa molto popolare durante un certo periodo e iniziamo a ricevere molte richieste e traffico Internet che il nostro server non è in grado di gestire?
-
-Con il cloud computing, possiamo configurare più VM che eseguono lo stesso software di back-end, quindi configurare una VM speciale davanti a queste denominata Load Balancer. Un Load Balancer ridistribuisce le richieste in modo uniforme tra le nostre macchine virtuali. Una volta terminato il periodo di traffico intenso, possiamo semplicemente spegnere alcune VM quando non ne abbiamo bisogno.
+Con il cloud computing, è possibile configurare più VM che eseguono lo stesso software di back-end, quindi configurare una VM speciale davanti a queste denominata <b>Load Balancer</b> che ridistribuisce le richieste in modo uniforme tra le nostre macchine virtuali. Una volta terminato il periodo di traffico intenso, possiamo semplicemente spegnere alcune VM quando non ne abbiamo bisogno.
 
 Abbiamo ancora un altro problema. Ora abbiamo molte macchine virtuali che dobbiamo creare e configurare e questo richiede molto tempo e fatica. Le società di cloud computing offrono un altro servizio chiamato PaaS (Platform as a Service). Questo ci consente di caricare il nostro codice di back-end e imposterà tutte le VM e i bilanciatori di carico per noi.
 
-Nel mondo reale un back-end può essere costituito da milioni di righe di codice, quindi ci dividiamo in tre basi di codice. Quindi ciascuna di queste basi di codice avrà il proprio back-end, il servizio di bilanciamento del carico e il database.
+I backend vengono separati tra di loro per vere un bilanciamento del carico adeguato in base all'esigenza del singolo microservizio. Ogni microservizio non deve utilizzare lo stesso sistema di bilanciamento del carico, linguaggio di programmazione e database.
 
-Quando abbiamo bisogno di inviare un'e-mail, il nostro back-end degli ordini invierà una richiesta al back-end dell'e-mail, che invierà l'e-mail. La suddivisione del nostro back-end in back-end separati è chiamata Microservizi. Ci aiuta a mantenere il nostro codice di base più piccolo e mirato.
-
-Ogni microservizio non deve utilizzare lo stesso sistema di bilanciamento del carico, linguaggio di programmazione e database. Ad esempio, un microservizio può utilizzare Javascript e MongoDB, un altro può utilizzare Python e PostgreSQL. Inoltre, un Microservizio potrebbe essere offerto da un'altra azienda.
-
-Quando un'azienda fornisce un backend e un'API che possono essere utilizzati da applicazioni esterne, questo viene chiamato SaaS (Software as a Service)
+Quando un'azienda fornisce un backend e un'API che possono essere utilizzati da applicazioni esterne, questo viene chiamato <b>SaaS</b> (Software as a Service)
 
 Cloud:
 - SaaS: utente finale (Office365, Trello, SalesForce)
@@ -1290,37 +1548,52 @@ Cloud:
 
 Al giorno d'oggi la maggior parte delle aziende utilizza il cloud computing per eseguire il back-end delle proprie applicazioni Web invece di acquistare e gestire i server fisici (Bare Metal).
 
-In precedenza abbiamo introdotto alcuni database come MySQL, PostgreSQL e MongoDB. Questi a volte sono chiamati Database Primari, perché sono i database principali utilizzati dalla nostra applicazione web.
+Generalmente iniziamo il nostro back-end con un server e un database primario (alcuni database come MySQL, PostgreSQL e MongoDB che a volte sono chiamati Database Primari, perché sono i database principali utilizzati dalla nostra applicazione web) e poi inseriamo queste tecnologie aggiuntive se necessario. Se consentiamo ai nostri utenti di caricare immagini, un database primario non è adatto per archiviare tali dati, quindi potremmo utilizzare uno store BLOB come un comune servizio CDN per archiviare e caricare le immagini caricate dagli utenti.
 
-Generalmente iniziamo il nostro back-end con un server e un database primario e poi inseriamo queste tecnologie aggiuntive se necessario. Se consentiamo ai nostri utenti di caricare immagini, un database primario non è adatto per archiviare tali dati, quindi potremmo utilizzare uno store BLOB come un comune servizio CDN per archiviare e caricare le immagini caricate dagli utenti.
+Se nella nostra applicazione Web volessimo scaricare un po' di stress dal nostro database principale, aggiungeremo un servizio di cache, come Redis, per migliorare le prestazioni. Inoltre, se abbiamo bisogno di pianificare qualcosa o una coda di lavoro, useremmo RabbitMQ per pianificare alcune attività o messaggi.
 
-Se la nostra applicazione Web sta ricevendo molto traffico e dobbiamo scaricare un po' di stress dal nostro database principale, aggiungeremo un servizio di cache, come Redis, per migliorare le prestazioni. Inoltre, se abbiamo bisogno di pianificare qualcosa o una coda di lavoro, useremmo RabbitMQ per pianificare alcune attività o messaggi.
+<div style="page-break-after: always;"></div>
 
 # Nodejs
 
-Node.js è un ambiente per eseguire Javascript al di fuori del browser e quindi al di fuori della sandbox del browser. È stato creato nel 2009 ed è basato su Chrome V8 JS Engine. Con l'aiuto di Node non è mai stato così facile creare applicazioni Web Full Stack, il frontend e il backend sono costruiti utilizzando la stessa lingua!
+Node.js è un runtime system open source multipiattaforma orientato agli eventi per l'esecuzione di codice JavaScript, costruito sul motore JavaScript V8 di Google Chrome. Molti dei suoi moduli base sono scritti in JavaScript, e gli sviluppatori possono scrivere nuovi moduli nello stesso linguaggio di programmazione, perfetto per applicazioni ad alta intensità di dati e in tempo reale. Node.js è un ambiente per eseguire Javascript al di fuori del browser e quindi al di fuori della sandbox del browser.
 
-È open source e multipiattaforma ed è perfetto per applicazioni ad alta intensità di dati e in tempo reale.
+<table>
+<tr>
+    <th>Browser</th>
+    <th>Node.js</th>
+</tr>
+<tr>
+    <td>DOM</td>
+    <td>No DOM</td>
+</tr>
+<tr>
+    <td>Window</td>
+    <td>Global</td>
+</tr>
+<tr>
+    <td>Interactive app</td>
+    <td>Server side apps</td>
+</tr>
+<tr>
+    <td>No filesystem</td>
+    <td>Filesystem</td>
+</tr>
+<tr>
+    <td>Fragmentation</td>
+    <td>Versioning</td>
+</tr>
+<tr>
+    <td>ES6 Modules</td>
+    <td>CommonJS</td>
+</tr>
+<tr>
+    <td>Browser console</td>
+    <td>OS terminal</td>
+</tr>
+</table>
 
-Browser
-- DOM
-- Window
-- Interactive App
-- No Filesystem
-- Fragmentation
-- ES6 Modules
-- Browser Console
-
-Node.js
-- No DOM
-- Global
-- Server Side Apps
-- Filesystem
-- Versioning
-- CommonJS
-- O.S. Terminal
-
-Per runnare un codice JS: `node <filename>`sul terminale. Tutte le vanilla functions trovate sull'oggetto window sul web browser sono trovate nel progetto global. In Node.js ci sono diverse variabilio globali. Nel browser sappiamo che abbiammo accesso all'oggetto window e possiamo ottenere un sacco di cose utili da questo globale, ad esempio un querySelector o un fetch. Non c'è oggetto finestra. In Node.js esiste un vero concetto di variabili globali.
+Per runnare un codice JS: `node <filename>` sul terminale. Tutte le vanilla functions (funzioni di JS senza utilizzare alcuna libreria esterna) trovate sull'oggetto window sul web browser sono trovate nel progetto global. In Node.js ci sono diverse variabilio globali. Nel browser sappiamo che abbiammo accesso all'oggetto window e possiamo ottenere un sacco di cose utili da questo globale, ad esempio un querySelector o un fetch. Non c'è oggetto window in NodeJs. In Node.js esiste un vero concetto di variabili globali.
 
 - `_dirname`: path della directory corrente
 - `filename`: filename corrente
@@ -1332,9 +1605,9 @@ Quando si esegue un'applicazione Node.js si esegue un file, ma l'applicazione pu
 
 Quindi per creare un nuovo modulo, devi creare un nuovo file vuoto.
 
-Ad esempio, creare un nuovo file in cui definiremo alcune variabili, una privata (forse un token segreto) e una variabile pubblica che vogliamo esportare. Nelle variabili globali abbiamo il modulo global che stampa alcune informazioni sul modulo. C'è un oggetto chiamato exports che deﬁnisce cosa verrà esportato dal modulo. Quindi possiamo decidere cosa può essere “pubblico” e cosa non lo è.
+Ad esempio, creare un nuovo file in cui definiremo alcune variabili, una privata (forse un token segreto) e una variabile pubblica che vogliamo esportare. Nelle variabili globali abbiamo il modulo `global` che stampa alcune informazioni sul modulo. C'è un oggetto chiamato `exports` che deﬁnisce cosa verrà esportato dal modulo. Quindi possiamo decidere cosa può essere “pubblico” e cosa non lo è.
 
-Infine, possiamo importare il nuovo modulo con la funzione require global, usando la dot path syntax.
+Infine, possiamo importare il nuovo modulo con la funzione `require global`, usando la dot path syntax. Per eseguire codice node basta `node file.js`
 
 ```
 //names.js file
@@ -1359,6 +1632,8 @@ const trace = require("./myconsole.js");
 trace(names);
 
 ```
+
+<b>TIP personale:</b> ricorda che per gestire le varie versioni di node puoi usare nvm!!
 
 ## Built-in modules
 
@@ -1388,7 +1663,7 @@ console.log(currentOS);
 
 ### Path modules
 
-Il modulo permette di interagire con i path / filesystem dei sistemi oeprativi
+Il modulo permette di interagire con i path / filesystem dei sistemi operativi
 
 ```
 const path = require("path");
@@ -1406,7 +1681,7 @@ const absolute = path.resolve(_dirname, "contentdir", "file.txt"); // resolve to
 
 ### FS module
 
-Permettono di interagire con il filesystem del so. Può lavorare in modo sincrono ed asincrono.
+Permettono di interagire con il filesystem del SO e può lavorare in modo sincrono ed asincrono.
 
 Sincrono:
 
@@ -1486,7 +1761,7 @@ const server = http.createServer((req, res) => {
 
 ## NPM
 
-Node Package Manager è il node package manager di node.js grazie al quale è possibile caricare e condividere il codice. I pacchetti sono moduli esterni con le loro dipendenze. Non vi è controllo qualità, è possibile trovare codice non funzionante o malware
+Node Package Manager (npm) è il node package manager di node.js, grazie al quale è possibile caricare e condividere il codice. I pacchetti sono moduli esterni con le loro dipendenze. Non vi è controllo qualità, è possibile trovare codice non funzionante o malware
 
 Install locally the package and its dependencies
 
@@ -1515,22 +1790,14 @@ File più importante che definisce alcune informazioni importanti riguardo al pr
 - Lista delle dipendenze e la loro versione
 - Lista delle dependenze di sviluppo e la loro versione
 
-Permettono di committare e deployare il progetto senza le dipendenze installate, può essere installate anche dopo la prima run.
-
-Quando un pacchetto viene installato (ad esempio localmente), nel tuo progetto viene creata automaticamente una cartella di progetto denominata `node_modules` e i pacchetti vengono installati in questa cartella.
-
-Infine, quando abbiamo bisogno di caricare il nome di un pacchetto (come bootstrap) possiamo usare solo il nome del pacchetto (`require(“bootstrap”)`).
-
-Questo meccanismo permette di differenziarsi da moduli personali e moduli di terze parti. Inoltre, un pacchetto può richiedere molte dipendenze e questa cartella potrebbe diventare davvero pesante in termini di spazio su disco.
-
-Quindi, quando il progetto è pronto per il commit e la distribuzione, è sufficiente caricare l'intero progetto senza la cartella `node_modules` e avviare l'installazione `npm` per installare tutte le dipendenze definite nel file `package.json` (quindi aggiungere `node_modules` nel proprio `.gitignore!`).
+Permettono di committare e deployare il progetto senza le dipendenze installate, può essere installate anche dopo la prima run. Quando un pacchetto viene installato (ad esempio localmente), nel progetto viene creata automaticamente una cartella denominata `node_modules` dove vengono installati i pacchetti. Infine, quando abbiamo bisogno di caricare il nome di un pacchetto (come bootstrap), è possibile usare solo il nome del pacchetto (`require(“bootstrap”)`). Questo meccanismo permette di differenziarsi da moduli personali e moduli di terze parti. Inoltre, un pacchetto può richiedere molte dipendenze e questa cartella potrebbe diventare davvero pesante in termini di spazio su disco. Quindi, quando il progetto è pronto per il commit e la distribuzione, è sufficiente caricare l'intero progetto senza la cartella `node_modules` e avviare l'installazione `npm` per installare tutte le dipendenze definite nel file `package.json` (quindi aggiungere `node_modules` nel proprio `.gitignore`).
 
 ## Events
 
 In `Node.js`è possibile ascoltare alcuni eventi specifici e successivamente runnare callback sul trigger. È possibile definire eventi personalizzati. Per gestire ed utilizzare eventi è necessario usare dei moduli built.in . Per gestire questi eventi possiamo usare `EventEmitter` dai built-in module `events`.
 
 ```
-const EventEmitteer = require("events");
+const EventEmitter = require("events");
 
 // custom event emitter
 const customEmitter = new EventEmitter();
@@ -1555,7 +1822,7 @@ customEmitter.emit("response", "Mario", 35);
 
 ### Http
 
-I moduli http creano un server che è un'istanza EventEmitter e ha i suoi eventi, come l'evento di richiesta che viene attivato quando un utente fa una richiesta al nostro server.
+I moduli http creano un server che è un'istanza `EventEmitter` e ha i suoi eventi, come l'evento di richiesta che viene attivato quando un utente fa una richiesta al nostro server.
 
 ```
 const http = require("http");
@@ -1570,14 +1837,14 @@ server.listen(8080);
 
 ### Streams
 
-Sono usati per leggere o scrivere in sequenza. Quando dobbiamo gestire e manipolare i dati in streaming, ad esempio il sorgente continuo o un file di grandi dimensioni, gli stream sono molto utili ed estendono la classe EventEmitter. Quattro tipi:
+Sono usati per leggere o scrivere in sequenza. Quando dobbiamo gestire e manipolare i dati in streaming, ad esempio il sorgente continuo o un file di grandi dimensioni, sono molto utili ed estendono la classe EventEmitter. Quattro tipi:
 
-- Writeable: usati per scrivere dati sequenzialmente
-- Readable: usati per leggere i dati sequenzialmente
-- Duplex: usati per leggere e scrivere dati sequenzialmente
-- Transform: i dati possono essere modificati quando scrivi o leggi
+- <b>Writeable</b>: usati per scrivere dati sequenzialmente
+- <b>Readable</b>: usati per leggere i dati sequenzialmente
+- <b>Duplex</b>: usati per leggere e scrivere dati sequenzialmente
+- <b>Transform</b>: i dati possono essere modificati quando scrivi o leggi
 
-Sono utili e gestiscono anche grandi file da inviare in risposta in http:
+Sono utili e gestiscono anche grandi file da inviare in risposta in `http`:
 
 ```
 const {createReadStream} = require("fs");
@@ -1602,16 +1869,11 @@ http.createServer((req, res) => {
         });
         fileStream.on("error", (err) => {res.end(err)});
 }).listen(8080);
-
 ```
-
 
 # Express.js
 
-È un framework di Node.js minimale e flessibile creato per sviluppare web app ed API in modo veloce e semplice. Express è costruito sul modulo http ma non è un modulo integrato ma al giorno d'oggi è uno standard per la creazione di applicazioni web.
-
-Rende molto più semplice la creazione di applicazioni Web con Node.js Utilizzato per app server, servizi API e microservizi Estremamente leggero, veloce e gratuito Controllo completo di richieste e risposte Il framework più popolare su Node.js Ottimo da utilizzare con framework lato client
-
+È un framework di Node.js minimale e flessibile creato per sviluppare web app ed API in modo veloce e semplice. Express è costruito sul modulo http ma non è un modulo integrato ma al giorno d'oggi è uno standard per la creazione di applicazioni web:
 - Rende molto più semplice la creazione di applicazioni Web con Node.js
 - Utilizzato per app server, servizi API e microservizi
 - Estremamente leggero, veloce e gratuito
@@ -1619,7 +1881,7 @@ Rende molto più semplice la creazione di applicazioni Web con Node.js Utilizzat
 - Il framework più popolare su Node.js
 - Ottimo da utilizzare con framework lato client
 
-Per quanto riguarda il modulo http, è necessario creare un'istanza dell'applicazione express che abbia lo stesso metodo listen per eseguire il server http su una porta speciﬁca.
+Per quanto riguarda il modulo `http`, è necessario creare un'istanza dell'applicazione express che abbia lo stesso metodo listen per eseguire il server `http` su una porta speciﬁca:
 
 ```
 const express = require("express");
@@ -1632,21 +1894,19 @@ app.get("/", (req, res) => {
 app.listen(8080, () => {
     console.log("Server listen on port 8080");
 })
-
 ```
 
 ## App methods
 
-- get: GET request management
-- post: POST request management
-- put: PUT request management
-- all: to manage all type of request
-- use: this is responsible for middleware
+- `get`: GET request management
+- `post`: POST request management
+- `put`: PUT request management
+- `all`: to manage all type of request
+- `use`: this is responsible for middleware
 
 ## Static files
 
-Negli esempi precedenti restituiamo semplicemente una stringa, una stringa HTML o un singolo file al client quando questo fa una richiesta GET (per esempio alla root route). Nella realtà, un'applicazione web (frontend) ha molti file, come HTML, CSS, JS, immagini, ecc. file che sono difficili da gestire uno per uno. Inoltre, questi file non cambiano nel tempo ma solo se lo sviluppatore aggiornerà il codice frontend. Infatti, l'applicazione frontend può aggiornarsi autonomamente tramite javascript, quindi può modificare l'interfaccia utente e le informazioni con lo stesso codice senza generarlo dinamicamente. Pertanto, possiamo dire che, un tipico codice frontend e tutti i suoi asset sono file “statici”
-
+Negli esempi precedenti restituiamo semplicemente una stringa, una stringa HTML o un singolo file al client quando questo fa una richiesta GET (per esempio alla root route). Nella realtà, un'applicazione web (frontend) ha molti file, come HTML, CSS, JS, immagini, ecc. file che sono difficili da gestire uno per uno. Inoltre, questi file non cambiano nel tempo ma solo se lo sviluppatore aggiornerà il codice frontend. Infatti, l'applicazione frontend può aggiornarsi autonomamente tramite javascript, quindi può modificare l'interfaccia utente e le informazioni con lo stesso codice senza generarlo dinamicamente. Pertanto, possiamo dire che, un tipico codice frontend e tutti i suoi asset sono file “statici”.
 
 I file statici sono in genere file che il server non deve modificare o generare. Per definirlo utilizzeremo il middleware (lo vedremo più avanti). Express gestirà tutte le richieste a questi file statici (percorsi, ecc.).File static non significa che l'applicazione non è dinamica. Una web app è una browser abb, successivamente il Js gestirà gli aspetti dinamici dell'app dinamica. Se non hai bisogno di generare dinamicamente i tuoi i dati, allora basta usare un Server Side Framework.
 
@@ -1662,7 +1922,6 @@ app.all("*", (req, res) => {
 })
 
 app.listen(8080)
-
 ```
 
 ## API vs SSR
@@ -1677,13 +1936,11 @@ SSR:
 - send template
 - res.render()
 
-L'architettura API è una delle più utilizzate nello sviluppo di un software di back-end. Con l'API tutti i dati verranno inviati in tipo JSON e quindi saranno compatibili con tutti gli ambienti.
-
-Un altro metodo è quello di generare dinamicamente un intero client ad ogni richiesta, come PHP con Laravel, utilizzando il rendering di Express con un motore di rendering. L'ultimo è uno dei più complicati e non molto utilizzato per lo sviluppo del back-end al giorno d'oggi.
+L'architettura API è una delle più utilizzate nello sviluppo di un software di back-end. Con l'API tutti i dati verranno inviati in tipo `JSON` e quindi saranno compatibili con tutti gli ambienti. Un altro metodo è quello di generare dinamicamente un intero client ad ogni richiesta, come PHP con Laravel, utilizzando il rendering di Express con un motore di rendering. L'ultimo è uno dei più complicati e non molto utilizzato per lo sviluppo del back-end al giorno d'oggi.
 
 ## Route Params
 
-A volte, il cliente vorrebbe accedere ad una specifica risorsa, o magari cancellarla o aggiornarla. Per fare ciò bisogna accedere ai route parameters. Per accedere a questi parametri bisogna usare la variabile request ed i suoi params attribute. Successivamente possiamo conoscere tutti i parametri che sono definiti nella url route. Nella url route puoi definire i nomi dei parametri con la sintassi `:paramName`
+A volte, il client vorrebbe accedere ad una specifica risorsa, o magari cancellarla o aggiornarla. Per fare ciò bisogna accedere ai <i>route parameters</i>. Per accedere a questi parametri bisogna usare la variabile request ed i suoi params attribute. Successivamente possiamo conoscere tutti i parametri che sono definiti nella url route. Nella url route puoi definire i nomi dei parametri con la sintassi `:paramName`
 
 ```
 // not dynamic solution
@@ -1702,7 +1959,7 @@ app.get("api/products/:productID", (req, res) => {
 
 ## Query params
 
-In aggiunta, il client dovrebbe inviare più informazioni riguardo la risorsa. Per fare ciò, bisogna accedere ai query parameters (o URL parameters). Per accedere a questi aprametri bisogna usare la variabile request e l'attributo query.  
+In aggiunta, il client dovrebbe inviare più informazioni riguardo la risorsa. Per fare ciò, bisogna accedere ai query parameters (o URL parameters). Per accedere a questi parametri bisogna usare la variabile request e l'attributo query.  
 
 ```
 app.get("/api/v1/search", (req, res) => {
@@ -1724,7 +1981,7 @@ app.get("/api/v1/search", (req, res) => {
 
 ## Middleware
 
-Sono funzioni che esegue durante le richieste al server. Ogni middleware ha accesso agli oggetti di request e response. In express ogni cosa è un middleware ed è il cuore di express. Un middleware sta tra la request e la response. Anche un middlware ha il riferimento al middleware next ed è necessario chiamarlo. È possibile usare infiiniti middleware
+Sono funzioni che esegue durante le richieste al server. Ogni middleware ha accesso agli oggetti di request e response. In express ogni cosa è un middleware. Un middleware sta tra la request e la response ha anche il riferimento al middleware `next` ed è necessario chiamarlo. È possibile usare infiniti middleware
 
 ```
 const logger = (req, res, next) => {
@@ -1741,9 +1998,9 @@ app.listen(8080)
 
 ```
 
-## Use
+### Utilizzo
 
-I middleware sono un potente strumento all'interno del quale possiamo aggiungere alcuni comportamenti basati su percorsi e metodi, come la manipolazione o il controllo dei dati in input o l'autenticazione dell'utente. Ma aggiungere queste funzioni nelle nostre singole rotte potrebbe essere un compito enorme. Abbiamo bisogno di qualcosa che applichi un middleware a tutti i percorsi! Usare `use` permette di aggiungere un middleware basato sulla invocazione della posizione a tutte le rotte e agli altri middleware. È possibile anche definire un path!
+I middleware sono un potente strumento all'interno del quale possiamo aggiungere alcuni comportamenti basati su percorsi e metodi, come la manipolazione o il controllo dei dati in input o l'autenticazione dell'utente. Per applicare un middleware a tutti i percorsi bisogna utilizzare `use` permette di aggiungere un middleware basato sulla invocazione della posizione a tutte le rotte e agli altri middleware. È possibile anche definire un path
 
 ```
 app.use(logger);
@@ -1765,7 +2022,7 @@ app.use(express.json());
 app.post("/login", (req, res) => {
     const {email} = req.body;
     if (email){
-        return res.status(200).send("Welcome back"+email);
+        return res.status(200).send("Welcome back" + email);
     }
 
     return res.status(401).send("Email must be sent)
@@ -1776,7 +2033,7 @@ NOTA: The ﬂag extended : false needs to force the parsing with body-parser. Th
 
 ## Router
 
-Router consente agli sviluppatori di raggruppare le route di richiesta in base a una logica. Inoltre, vengono utilizzati in genere nel modello MVC. L'utilizzo dei router permette di organizzare i percorsi delle richieste in gruppi e categorie! In questo modo, puoi espandere il tuo back-end più facilmente. Inoltre puoi implementare i controller e i modelli MVC (sono middleware!).
+Router consente agli sviluppatori di raggruppare le route di richiesta in base a una logica. Inoltre, vengono utilizzati in genere nel modello MVC. L'utilizzo dei router permette di organizzare i percorsi delle richieste in gruppi e categorie! In questo modo, puoi espandere il tuo back-end più facilmente. Inoltre puoi implementare i controller e i modelli MVC (sono middleware!)
 
 ```
 //router.js
@@ -1785,10 +2042,13 @@ const express = require("express");
 
 const router = express.Router();
 
+router.get("/peoples" , (req, res) => { 
+    res.send(peoples)
+});
 
-router.get("/peoples" , (req, res) => { res.send(peoples)});
-
-router.get("/peoples/:id", (req, res) => { res.send(peoples[req.params.id])});
+router.get("/peoples/:id", (req, res) => {
+    res.send(peoples[req.params.id])
+});
 module.exports = router;
 
 //app.js
@@ -1809,14 +2069,13 @@ app.use(express.json());
 app.use("/api", mainRouter);
 ```
 
-
 # WS & Socket.io
 
-Quando un utente naviga sul Web, il browser (client) invia determinate richieste tramite percorsi REST ("GET", "POST", ecc.) al server che ospita il sito Web a cui stanno tentando di accedere. Il server riceve le richieste e invia le informazioni come risposte al client, che riceve e restituisce le informazioni sulla risposta sulla pagina. Se hai bisogno di aggiornare alcune informazioni, devi fare più richieste al server in un intervallo di tempo. Questo approccio è chiamato polling. Le WebSocket sono diverse perché funzionano tenendo sempre aperta la connessione dal client al server. In questo modo, il server può inviare informazioni al client, anche in assenza di una richiesta esplicita da parte del cliente. I client possono comunque effettuare richieste HTTP al server come di consueto; tuttavia, la connessione WebSocket consente una comunicazione costante nel caso in cui vengano creati nuovi dati e quindi debbano essere renderizzati lato client.
+Quando un utente naviga sul Web, il browser (client) invia determinate richieste tramite percorsi REST ("GET", "POST", ecc.) al server, che ospita il sito Web a cui si effettuano le richieste. Il server riceve le richieste e invia le informazioni come risposte al client, che riceve e restituisce le informazioni della risposta sulla pagina. Se hai bisogno di aggiornare alcune informazioni, devi fare più richieste al server in un intervallo di tempo. Questo approccio è chiamato <i>polling</i>. Le **WebSocket** sono diverse perché funzionano tenendo sempre aperta la connessione dal client al server. In questo modo, il server può inviare informazioni al client, anche in assenza di una richiesta esplicita da parte del cliente. I client possono comunque effettuare richieste `HTTP` al server come di consueto; tuttavia, la connessione WebSocket consente una comunicazione costante nel caso in cui vengano creati nuovi dati e quindi debbano essere renderizzati lato client.
 
-Una connessione inizia con un handshake HTTP che richiede un aggiornamento per il protocollo, questo è chiamato WebSocket Handshake request. L'handshake inizia con una richiesta/risposta HTTP, consentendo ai server di gestire le connessioni HTTP e le connessioni WebSocket sulla stessa porta. Una volta stabilita la connessione, la comunicazione passa a un protocollo binario bidirezionale che non è conforme al protocollo HTTP. Oltre alle intestazioni di aggiornamento, il client invia un'intestazione Sec-WebSocket-Key contenente byte casuali con codifica base64 e il server risponde con un hash della chiave nell'intestazione Sec-WebSocket-Accept. Ciò ha lo scopo di impedire a un proxy di memorizzazione nella cache di inviare nuovamente una conversazione WebSocket precedente e non fornisce alcuna autenticazione, privacy o integrità.
+Una connessione inizia con un **handshake HTTP** che richiede un aggiornamento per il protocollo, questo è chiamato *WebSocket Handshake request*. L'handshake inizia con una richiesta/risposta HTTP, consentendo ai server di gestire le connessioni HTTP e le connessioni WebSocket sulla stessa porta. Una volta stabilita la connessione, la comunicazione passa a un protocollo binario bidirezionale che non è conforme al protocollo HTTP. Oltre alle intestazioni di aggiornamento, il client invia un'intestazione `Sec-WebSocket-Key` contenente byte casuali con codifica `base64` e il server risponde con un hash della chiave nell'intestazione `Sec-WebSocket-Accept`. Ciò ha lo scopo di impedire a un proxy di memorizzazione nella cache di inviare nuovamente una conversazione WebSocket precedente e non fornisce alcuna autenticazione, privacy o integrità.
 
-Una volta stabilita la connessione, il client e il server possono inviare dati WebSocket o frame di testo avanti e indietro in modalità full-duplex. I dati sono minimamente inquadrati, con una piccola intestazione seguita dal carico utile. Le trasmissioni WebSocket sono descritte come "messaggi", in cui un singolo messaggio può essere opzionalmente suddiviso su più frame di dati
+Una volta stabilita la connessione, il client e il server possono inviare dati WebSocket o frame di testo avanti e indietro in modalità full-duplex. I dati sono minimamente inquadrati, con una piccola intestazione seguita dal carico utile. Le trasmissioni `WebSocket` sono descritte come "messaggi", in cui un singolo messaggio può essere opzionalmente suddiviso su più frame di dati
 
 ```
 GET /chat HTTP/1.1
@@ -1836,7 +2095,7 @@ Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
     Sec-WebSocket-Protocol: chat
 ```
 
-I WebSocket funzionano a livello di applicazione e possono funzionare senza un server specifico. In effetti, un server WebSocket può essere eseguito utilizzando un server HTTP esistente o autonomo. Per deﬁnire una connessione WebSocket devi deﬁnire un URL usando il protocollo ws://, invece di http://. Come HTTP, i WebSocket supportano la crittografia SSL e puoi specificarla utilizzando il protocollo wss://.
+I `WebSocket` funzionano a livello di applicazione e possono funzionare senza un server specifico. In effetti, un server `WebSocket` può essere eseguito utilizzando un server HTTP esistente o autonomo. Per deﬁnire una connessione WebSocket devi deﬁnire un URL usando il protocollo `ws://`, invece di `http://`. Come HTTP, i WebSocket supportano la **crittografia SSL** e puoi specificarla utilizzando il protocollo `wss://`.
 
 L'associazione immediata di alcuni gestori di eventi alla connessione consente di sapere quando la connessione è stata aperta, ha ricevuto messaggi in arrivo o si è verificato un errore.
 
@@ -1897,50 +2156,66 @@ server.on('upgrade', (req, socket, head) => {
 
 ```
 
-## Socket.io
-
-È un protocollo nuovo ma il suo utilzzo nelle IoT app sta crescendo. Tuttavia vi sono dei problemi con le ws:
+È un protocollo nuovo ma il suo utilzzo nelle **IoT** app sta crescendo. Tuttavia vi sono dei problemi con le ws:
 
 - Non pensato per la comunicazione da server a server, forse è preferibile un socket UDP di basso livello
 - Non pensato per la comunicazione da client a client (p2p), per questo c'è WebRTC!
 - Se si utilizzano proxy, questi devono essere compatibili con WebSocket
-- Il server deve supportare i WebSocket e il relativo handshake La lingua di backend deve supportare i WebSocket
-- IL BROWSER DEVE supportare i WebSocket (non tutti i browser supportano ws)
+- Il server deve supportare i WebSocket e il relativo handshake
+- Il linguaggio backend deve supportare i WebSocket
+- Il browser **DEVE** supportare i WebSocket (non tutti i browser supportano ws)
 
-Quindi, abbiamo bisogno di qualcosa che consenta lo sviluppo di una comunicazione full-duplex in tempo reale senza questi problemi!
+Quindi, vi è la necessita di  qualcosa che consenta lo sviluppo di una comunicazione full-duplex in tempo reale senza questi problemi!
 
-Socket.IO è una libreria che consente la comunicazione a bassa latenza, bidirezionale e basata su eventi tra un client e un server. Si basa sul protocollo WebSocket e fornisce garanzie aggiuntive come il fallback al long polling HTTP o la riconnessione automatica.
+## Socket.io
 
-Il canale bidirezionale tra il server Socket.IO (Node.js) e il client Socket.IO (browser, Node.js o un altro linguaggio di programmazione) viene stabilito con una connessione WebSocket quando possibile e utilizzerà il polling HTTP lungo come fallback .
+https://socket.io/docs/v4/
 
-La base di codice di Socket.IO è divisa in due livelli distinti:
+Socket.IO is a library that enables low-latency, bidirectional and event-based communication between a client and a server. It is built on top of the WebSocket protocol and provides additional guarantees like fallback to HTTP long-polling or automatic reconnection.
 
-▸ l'architettura di basso livello: quello che chiamiamo Engine.IO, il motore dentro Socket.IO
-▸ l'API di alto livello: Socket.IO stesso
+Socket.io IS NOT a WebSocket implementation.
+
+### Features
+Here are the features provided by Socket.IO over plain WebSockets:
+
+#### HTTP long-polling fallback
+The connection will fall back to HTTP long-polling in case the WebSocket connection cannot be established. This feature was the #1 reason people used Socket.IO when the project was created more than ten years ago (!), as the browser support for WebSockets was still in its infancy. Even if most browsers now support WebSockets (more than 97%), it is still a great feature as we still receive reports from users that cannot establish a WebSocket connection because they are behind some misconfigured proxy.
+
+#### Automatic reconnection
+Under some particular conditions, the WebSocket connection between the server and the client can be interrupted with both sides being unaware of the broken state of the link. That's why Socket.IO includes a heartbeat mechanism, which periodically checks the status of the connection. And when the client eventually gets disconnected, it automatically reconnects with an exponential back-off delay, in order not to overwhelm the server.
+
+#### Packet buffering
+The packets are automatically buffered when the client is disconnected, and will be sent upon reconnection.
+
+#### Broadcasting
+#### Multiplexing
+
+--
+
+La base di codice di **Socket.io** è divisa in due livelli distinti:
+
+- l'architettura di basso livello: **Engine.io**, il motore dentro **Socket.io**
+- l'API di alto livello: **Socket.io** stesso
 
 Engine.IO è responsabile di stabilire la connessione di basso livello tra il server e il client. Gestisce:
 
-▸ I vari trasporti (WebSocket o HTTP long polling)
-▸ Il meccanismo di aggiornamento
-▸ Il rilevamento della disconnessione
+- Le varie connessioni (WebSocket o HTTP long polling)
+- Il meccanismo di aggiornamento
+- Il rilevamento della disconnessione
 
-Per impostazione predefinita, il client stabilisce la connessione con il trasporto di polling lungo HTTP. Sebbene WebSocket sia chiaramente il modo migliore per stabilire una comunicazione bidirezionale, l'esperienza ha dimostrato che non è sempre possibile stabilire una connessione WebSocket, a causa di proxy aziendali, firewall personale, ecc.
+Per impostazione predefinita, il client stabilisce la connessione con il trasporto di long-polling HTTP. Sebbene WebSocket sia chiaramente il modo migliore per stabilire una comunicazione bidirezionale, l'esperienza ha dimostrato che non è sempre possibile stabilire una connessione WebSocket, a causa di proxy aziendali, firewall, ecc. 
 
-Per riassumere, Engine.IO si concentra sull'affidabilità e sull'aggiornamento, il cliente dovrà:
+To summarize, `Engine.IO` focuses on reliability and to upgrade, the client will:
+- ensure its outgoing buffer is empty
+- `put` the current transport in read-only mode
+- try to establish a connection with the other transport
+- if successful, close the first transport
+The `Engine.IO` connection is considered as closed when:
+- one HTTP request (either GET or POST) fails (for example, when the server is shutdown)
+- the WebSocket connection is closed (for example, when the user closes the tab in its browser)
+- `socket.disconnect()` is called on the server-side or on the client-side
 
-▸ assicurarsi che il buffer in uscita sia vuoto
-▸ mettere il trasporto corrente in modalità di sola lettura
-▸ provare a stabilire una connessione con l'altro trasporto
-▸ in caso di successo, chiudere il primo trasporto
-
-La connessione Engine.IO è considerata chiusa quando:
-
-▸ una richiesta HTTP (GET o POST) non riesce (ad esempio, quando il server viene spento)
-▸ la connessione WebSocket viene chiusa (ad esempio, quando l'utente chiude la scheda nel proprio browser)
-▸ socket.disconnect() viene chiamato sul lato server o sul lato client
-
-C'è anche un meccanismo di heartbeat che controlla che la connessione tra il server e il client sia ancora attiva e funzionante.
-
+There is also a heartbeat mechanism which checks that the connection between the server and the client is still up and running.
 
 ### Utilizzo
 
@@ -1985,7 +2260,7 @@ httpServer.listen(8080);
 ```
 
 
-Una Socket è la classe fondamentale per interagire con il client. Eredita tutti i metodi di Node.js EventEmitter, come emit, on, once o removeListener.
+Una Socket è la classe fondamentale per interagire con il client. Eredita tutti i metodi di Node.js `EventEmitter`, come `emit`, `on`, `once` o `removeListener`.
 
 ```
 // ogni nuova connessione è assegnata a 20 caratteri random
@@ -2029,7 +2304,6 @@ io.on('connection',(socket) => {
 
 Se vogliamo inviare un evento a tutti ma il client lo ha causato, possiamo usare `socket.broadcast.emit`
 
-
 ```
 io.on('connection', (socket) => {
     clients++;
@@ -2045,9 +2319,9 @@ io.on('connection', (socket) => {
 
 #### Namespaces
 
-Socket.IO ti consente di assegnare "namespace" i tuoi socket, il che significa essenzialmente assegnare diversi endpoint o percorsi. Questa è una funzione utile per ridurre al minimo il numero di risorse (connessioni TCP) e allo stesso tempo separare le preoccupazioni all'interno dell'applicazione introducendo la separazione tra i canali di comunicazione. Più spazi dei nomi condividono effettivamente la stessa connessione WebSocket, salvandoci così le porte socket sul server.
+Socket.IO ti consente di assegnare "namespace" alle socket, il che significa essenzialmente assegnare diversi endpoint o percorsi. Questa è una funzione utile per ridurre al minimo il numero di risorse (connessioni TCP) e allo stesso tempo separare i conceetti all'interno dell'applicazione introducendo la separazione tra i canali di comunicazione. Più spazi dei nomi condividono effettivamente la stessa connessione WebSocket, salvandoci così le porte socket sul server.
 
-Lo spazio dei nomi radice '/' è lo spazio dei nomi predefinito, a cui si uniscono i client se uno spazio dei nomi non è specificato dal client durante la connessione al server. Tutte le connessioni al server che utilizzano il lato client dell'oggetto socket vengono effettuate nello spazio dei nomi predefinito. Di conseguenza per connettere i client al namespace, si ha la necessità di dare un namespace come argomento al costruttore io chiamato per creare una connessione ed un socket object sul lato client.
+Lo spazio dei nomi radice '/' è lo spazio dei nomi predefinito, a cui si uniscono i client se uno spazio dei nomi non è specificato dal client durante la connessione al server. Tutte le connessioni al server che utilizzano il lato client dell'oggetto socket vengono effettuate nel namespace predefinito. Di conseguenza per connettere i client al namespace, si ha la necessità di dare un namespace come argomento al costruttore `io` chiamato per creare una connessione ed un socket object sul lato client.
 
 ```
 const nsp = io.of('/my-namespace');
@@ -2059,8 +2333,17 @@ nsp.on('connection', function(socket){
 
 #### Rooms
 
-All'interno di ogni spazio dei nomi, puoi anche definire canali arbitrari a cui i socket possono unirsi e abbandonare. Questi canali sono chiamati stanze. Le stanze sono usate per separare ulteriormente i concetti. Le stanze condividono anche la stessa connessione socket come gli spazi dei nomi. Una cosa da tenere a mente durante l'utilizzo delle stanze è che possono essere unite solo sul lato server.
+All'interno di ogni namespace, è possibile anche definire canali arbitrari a cui i socket possono unirsi e abbandonare. Questi canali sono chiamati *rooms*: sono usate per separare ulteriormente i concetti. Le stanze condividono anche la stessa connessione socket come i namespace. Una cosa da tenere a mente durante l'utilizzo delle rooms è che possono essere unite solo sul lato server. 
 
-È possibile chiamare il metodo join sulla presa per sottoscrivere la presa a un determinato canale/stanza. Ad esempio, creiamo stanze chiamate 'room-<room-number>' e uniamoci ad alcuni clienti. Non appena questa stanza è piena, crea un'altra stanza e unisciti ai clienti lì.
+You can call the join method on the socket to subscribe the socket to a given channel/room. For example, let us create rooms called `room-<room-number>` and join some clients. As soon as this room is full, create another room and join clients there.
+You can also implement this in custom namespaces in the same fashion.
+To leave a room, you need to call the leave function just as you called the join function on the socket.
 
-Puoi anche implementarlo in spazi dei nomi personalizzati allo stesso modo. Per lasciare una stanza, devi chiamare la funzione leave proprio come hai chiamato la funzione join sul socket.
+```
+const roomno = 1;
+io.on('connection', function(socket){
+    socket.join("room-"+roomno);
+
+    io.sockets.in("room-"+roomno).emit('connectToRoom', "You are in room no. " + roomno);
+})
+```
