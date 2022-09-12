@@ -920,25 +920,21 @@ modi significativi:
 
 # JQuery
 
-jQuery è una libreria JavaScript che si concentra sulla semplificazione della manipolazione DOM, chiamate AJAX e gestione degli eventi. Viene utilizzato frequentemente dagli sviluppatori JavaScript.
-jQuery utilizza un formato, `$(selector).action()` per assegnare uno o più elementi a un evento. Per spiegarlo in dettaglio, $(selector) chiamerà jQuery per selezionare gli elementi del selettore e lo assegnerà a un'API di eventi chiamata `.action()`.
-Una cosa importante da sapere è che jQuery è solo una libreria JavaScript.
+jQuery è una libreria JavaScript che si concentra sulla semplificazione della manipolazione DOM, chiamate AJAX e gestione degli eventi, utilizza un formato `$(selector).action()` per assegnare uno o più elementi a un evento. In dettaglio, `$(selector)` chiamerà jQuery per selezionare gli elementi del selettore e lo assegnerà a un'API di eventi chiamata `.action()` (è solo una libreria JavaScript)
 
-## Come funziona ? 
+Per garantire che il loro venga eseguito dopo che il browser ha terminato di caricare il documento, molti programmatori JavaScript racchiudono il loro codice in una funzione di caricamento:
 
-Per garantire che il loro codice venga eseguito dopo che il browser ha terminato di caricare il documento, molti programmatori JavaScript racchiudono il loro codice in una funzione di caricamento:
-
-```
+```js
 window.onload = function() { alert( "welcome" ); };
 ```
 
 Sfortunatamente, il codice non parte fin quando tutte le immagini non sono state scaricate. Per runnare il codice una volta che il documento è pronto per essere manipolato:
 
-- The jQuery library exposes its methods and properties via two properties of the window object called jQuery and $.
-- $ is simply an alias for jQuery and it's often employed because it's shorter and faster to write.
+- The jQuery library exposes its methods and properties via two properties of the window object called `jQuery` and `$` (is simply an alias for jQuery and it's often employed because it's shorter and faster to write).
 
-```
-$( document ).ready(function() { // Your code here.
+```js
+$( document ).ready(function() {
+    // Your code here.
 });
 ```
 
@@ -946,11 +942,11 @@ Supporta la maggiorparte dei selettori CSS3
 
 ## Selectors
 
-Non effettua la cache degli elementi, se viene fatta una soluzione ed è probabile che debba essere fatta un'altra volta, è necessario salvare la selezione in una variabile invece di fare la selezione ripetutamente. Una volta che la selezione è salvata nella variabile, basta chiamare i metodi JQuery sulla variabile. Una selezione prende gli elementi che sono sulla pagina quando la selezione è fatta. Se gli elementi sono aggiunti alla pagina successivamente, ci sarà modo di ripetere la soluzione o invece aggiungerla alle selezioni salvate nella variabile. Stored selections don't magically update when the DOM changes.
+Non effettua la cache degli elementi, se viene fatta una selezione ed è probabile che debba essere fatta un'altra volta, conviene salvare la selezione in una variabile invece di effettuarla ripetutamente. Una volta che la selezione è salvata nella variabile, basta chiamare i metodi JQuery sulla variabile. Una selezione prende gli elementi che sono sulla pagina quando la selezione è fatta. Se gli elementi sono aggiunti alla pagina successivamente, ci sarà modo di ripetere la soluzione o invece aggiungerla alle selezioni salvate nella variabile. Stored selections don't magically update when the DOM changes.
 
 `var divs = $("div");`
 
-```
+```js
 // Refining selections.
 $( "div.foo" ).has( "p" ); // div.foo elements that contain <p> tags
 $( "h1" ).not( ".bar" ); // h1 elements that don't have a class of bar
@@ -962,13 +958,14 @@ $( "ul li" ).eq( 5 ); // the sixth
 
 Esistono molti modi per modificare un elemento esistente. Tra le attività più comuni c'è la modifica dell'HTML interno o dell'attributo di un elemento. jQuery offre metodi semplici e cross-browser per questo tipo di manipolazioni. Puoi anche ottenere informazioni sugli elementi usando molti degli stessi metodi nelle loro incarnazioni getter.
 
-```
-.html() – Get or set the HTML contents.
-.text() – Get or set the text contents; HTML will be stripped.
-.attr() – Get or set the value of the provided attribute.
-.width() – Get or set the width in pixels of the first element in the selection as an integer.
-.height() – Get or set the height in pixels of the first element in the selection as an integer. .position() – Get an object with position information for the first element in the selection, relative to its first positioned ancestor. This is a getter only.
-.val() – Get or set the value of form elements.
+```js
+.html()  // Get or set the HTML contents.
+.text()  // Get or set the text contents; HTML will be stripped.
+.attr()  // Get or set the value of the provided attribute.
+.width() // Get or set the width in pixels of the first element in the selection as an integer.
+.height() // Get or set the height in pixels of the first element in the selection as an integer.
+.position() // Get an object with position information for the first element in the selection, relative to its first positioned ancestor. This is a getter only.
+.val() //  Get or set the value of form elements.
 
 
 // Changing the HTML of an element.
@@ -988,7 +985,7 @@ Several other methods follow this pattern:` .insertBefore()` and `.before()`, `.
 
 Esistono due modi per rimuovere elementi dalla pagina:  `.remove()` e `.detach()`.
 
-- Utilizzare `.remove()` quando si desidera rimuovere permanentemente la selezione dalla pagina, Sebbene restituisca gli elementi rimossi, a questi elementi non verranno allegati i dati e gli eventi associati se li si restituisce alla pagina.
+- Utilizzare `.remove()` quando si desidera rimuovere permanentemente la selezione dalla pagina, sebbene restituisca gli elementi rimossi, a questi elementi non verranno allegati i dati e gli eventi associati se li si restituisce alla pagina.
 - Usa `.detach()` se hai bisogno che i dati e gli eventi persistano. Come `.remove()`, restituisce la selezione, ma conserva anche i dati e gli eventi associati alla selezione, in modo da poter ripristinare la selezione nella pagina in un secondo momento.
 Il metodo `.detach()` è estremamente prezioso se si esegue una manipolazione pesante su un elemento. In tal caso, è utile .detach() l'elemento dalla pagina, lavorarci sopra nel codice, quindi ripristinarlo nella pagina quando hai finito. Ciò limita i costosi "DOM touches" mantenendo i dati e gli eventi dell'elemento.
 
@@ -998,7 +995,7 @@ La sintassi per aggiungere nuovi elementi alla pagina è semplice, quindi si è 
 Se stai aggiungendo molti elementi allo stesso contenitore, dovrai concatenare tutto l'HTML in un'unica stringa, quindi aggiungere quella stringa al contenitore invece di aggiungere gli elementi uno alla volta.
 Usa una matrice per riunire tutti i pezzi, quindi uniscili in un'unica stringa per aggiungere:
 
-```
+```js
 var myItems = [];
 var myList = $( "#myList" );
 for ( var i = 0; i < 100; i++ ) {
@@ -1011,7 +1008,7 @@ myList.append( myItems.join( "" ) );
 
 Quando viene utilizzata la sintassi della funzione, la funzione riceve due argomenti: l'indice in base zero dell'elemento il cui attributo viene modificato e il valore corrente dell'attributo modificato.
 
-```
+```js
 // Manipulating a single attribute.
 $( "#myDiv a:first" ).attr( "href", "newDestination.html" );
 
@@ -1026,7 +1023,7 @@ $( "#myDiv a:first" ).attr({
 
 Ci sono spesso dati su un elemento che vuoi archiviare con l'elemento. jQuery offre un modo semplice per archiviare i dati relativi a un elemento e gestisce i problemi di memoria per te. Oltre a passare `.data()` una singola coppia chiave-valore per archiviare i dati, puoi anche passare un oggetto contenente una o più coppie.
 
-```
+```js
 // Storing and retrieving data related to an element.
 $( "#myDiv" ).data( "keyName", { foo: "bar" } );
 $( "#myDiv" ).data( "keyName" ); // Returns { foo: "bar" }
@@ -1034,16 +1031,17 @@ $( "#myDiv" ).data( "keyName" ); // Returns { foo: "bar" }
 
 ### Traversing
 
-Può essere suddiviso in tre parti fondamentali: genitori, figli e fratelli. jQuery ha un'abbondanza di metodi facili da usare per tutte queste parti. Si noti che ciascuno di questi metodi può essere facoltativamente passato a selettori di stringhe e alcuni possono anche accettare un altro oggetto jQuery per filtrare la selezione.
+Può essere suddiviso in tre parti fondamentali: genitori, figli e fratelli. jQuery ha molti metodi facili da usare per tutte queste parti (ciascuno di questi metodi può essere facoltativamente passato a selettori di stringhe e alcuni possono anche accettare un altro oggetto jQuery per filtrare la selezione):
 
 Parents: 
 
-```
+```js
 $( "span.subchild" ).parent();
 // Selecting all the parents of an element that match a given selector:
 $( "span.subchild" ).parents( "div.parent" );
 $( "span.subchild" ).parents();
-// Selecting all the parents of an element up to, but *not including* the selector: $( "span.subchild" ).parentsUntil( "div.grandparent" );
+// Selecting all the parents of an element up to, but *not including* the selector: 
+$( "span.subchild" ).parentsUntil( "div.grandparent" );
 // Selecting the closest parent, note that only one parent will be selected
 // and that the initial element itself is included in the search:
 $( "span.subchild" ).closest( "div" );
@@ -1053,23 +1051,21 @@ $( "div.child" ).closest( "div" );
 
 Il metodo per trovare gli elementi figlio da una selezione include `.children()` e `.find()`. La differenza tra questi metodi risiede nella profondità della struttura del figlio in cui viene effettuata la selezione. `.children()` opera solo su nodi figli diretti, mentre `.find()` può attraversare ricorsivamente i figli, i figli di quei figli e così via.
 
-```
+```js
 // Selecting an element's direct children:
 $( "div.grandparent" ).children( "div" );
-// Finding all elements within a selection that match the selector: $( "div.grandparent" ).find( "div" );
+// Finding all elements within a selection that match the selector:
+$( "div.grandparent" ).find( "div" );
 ```
 
 ### Async.js & XML AJAX
 
-L'oggetto XMLHttpRequest fa parte di una tecnologia chiamata Ajax (JavaScript asincrono e XML). Utilizzando Ajax, i dati potrebbero quindi essere passati tra il browser e il server, utilizzando l'API XMLHttpRequest, senza dover ricaricare la pagina web.
-Le richieste Ajax vengono attivate dal codice JavaScript; il codice invia una richiesta a un URL e, quando riceve una risposta, è possibile attivare una funzione di callback per gestire la risposta. Poiché la richiesta è asincrona, il resto del codice continua a essere eseguito durante l'elaborazione della richiesta, quindi è fondamentale che venga utilizzata una callback per gestire la risposta.
+L'oggetto XMLHttpRequest fa parte di una tecnologia chiamata AJAX (JavaScript asincrono e XML). Utilizzando AJAX, i dati potrebbero quindi essere passati tra il browser e il server, utilizzando l'API XMLHttpRequest, senza dover ricaricare la pagina web. Le richieste Ajax vengono attivate dal codice JavaScript; il codice invia una richiesta a un URL e, quando riceve una risposta, è possibile attivare una funzione di callback per gestire la risposta. Poiché la richiesta è asincrona, il resto del codice continua a essere eseguito durante l'elaborazione della richiesta, quindi è fondamentale che venga utilizzata una callback per gestire la risposta.
 
-Sfortunatamente, browser diversi implementano l'API Ajax in modo diverso. In genere ciò significava che gli sviluppatori avrebbero dovuto tenere conto di tutti i diversi browser per garantire che Ajax funzionasse universalmente.
-
-L'asincronia di Ajax coglie alla sprovvista molti nuovi utenti jQuery. Poiché le chiamate Ajax sono asincrone per impostazione predefinita, la risposta non è immediatamente disponibile. Le risposte possono essere gestite solo utilizzando una richiamata.
+Sfortunatamente, browser diversi implementano l'API Ajax in modo diverso. L'asincronia di Ajax coglie alla sprovvista molti nuovi utenti jQuery. Poiché le chiamate Ajax sono asincrone per impostazione predefinita, la risposta non è immediatamente disponibile. Le risposte possono essere gestite solo utilizzando una recall.
 Quindi, ad esempio, il seguente codice non funzionerà:
 
-```
+```js
 var response;
 $.get( "request.php", function( r ) {
     response = r;
@@ -1077,9 +1073,9 @@ $.get( "request.php", function( r ) {
 console.log( response ); // undefined
 ```
 
-Invece, dobbiamo passare una funzione di callback alla nostra richiesta; questo callback verrà eseguito quando la richiesta ha esito positivo, a quel punto possiamo accedere ai dati che ha restituito, se presenti.
+Invece, è necessario passare una funzione di callback alla richiesta; questa callback verrà eseguito quando la richiesta ha esito positivo, a quel punto possiamo accedere ai dati che ha restituito, se presenti.
 
-```
+```js
 $.get( "request.php", function( response ) { 
     console.log( response ); // server response
 });
@@ -1088,60 +1084,54 @@ $.get( "request.php", function( response ) {
 Il metodo core `$.ajax()` di jQuery è un modo potente e diretto per creare richieste Ajax. Richiede un oggetto di configurazione che contiene tutte le istruzioni necessarie a jQuery per completare la richiesta.
 Il metodo `$.ajax()` è particolarmente prezioso perché offre la possibilità di specificare callback sia di successo che di errore. Inoltre, la sua capacità di prendere un oggetto di configurazione che può essere definito separatamente semplifica la scrittura di codice riutilizzabile.
 
-```
+```js
 // Using the core $.ajax() method
 $.ajax({
-    // The URL for the request
-url: "post.php",
-// The data to send (will be converted to a query string) data: {
-id: 123 },
+    url: "post.php",     // The URL for the request
+    data: { // The data to send (will be converted to a query string)
+        id: 123 },
     // Whether this is a POST or GET request
-type: "GET",
-// The type of data we expect back dataType : "json",
-})
-// Code to run if the request succeeds (is done); // The response is passed to the function .done(function( json ) {
-     $( "<h1>" ).text( json.title ).appendTo( "body" );
-     $( "<div class=\"content\">").html( json.html ).appendTo( "body" );
-  })
-// Code to run if the request fails; the raw request and // status codes are passed to the function .fail(function( xhr, status, errorThrown ) {
-    alert( "Sorry, there was a problem!" );
-    console.log( "Error: " + errorThrown );
-    console.log( "Status: " + status );
-})
-  // Code to run regardless of success or failure;
-.always(function( xhr, status ) { alert( "The request is complete!" );
+    type: "GET",
+    // The type of data we expect back 
+    dataType : "json",
+}).done(function( json ) { // Code to run if the request succeeds (is done); // The response is passed to the function 
+        $( "<h1>" ).text( json.title ).appendTo( "body" );
+        $( "<div class=\"content\">").html( json.html ).appendTo( "body" );
+}).fail(function( xhr, status, errorThrown ) { // Code to run if the request fails; the raw request and // status codes are passed to the function 
+        alert( "Sorry, there was a problem!" );
+        console.log( "Error: " + errorThrown );
+        console.log( "Status: " + status );
+}).always(function( xhr, status ) { 
+        alert( "The request is complete!" );   // Code to run regardless of success or failure;
 });
 
 ```
 
 Le funzioni di convenienza Ajax fornite da jQuery possono essere modi utili e concisi per soddisfare le richieste Ajax. Questi metodi sono solo "wrapper" attorno al metodo principale `$.ajax()` e semplicemente preimpostano alcune delle opzioni sul metodo `$.ajax()`.
 
-```
-// Using jQuery's Ajax convenience methods // Get plain text or HTML (or POST) $.get( "/users.php", {
-userId: 1234
-}, function( resp ) {
-console.log( resp ); // server response });
- // Add a script to the page, then run a function defined in it
-$.getScript( "/static/js/myScript.js", function() { functionFromMyScript();
+```js
+// Using jQuery's Ajax convenience methods // Get plain text or HTML (or POST)
+$.get( "/users.php", { userId: 1234 }, function( resp ) {
+    console.log( resp ); // server response 
 });
- // Get JSON-formatted data from the server
-$.getJSON( "/details.php", function( resp ) { // Log each key in the response data $.each( resp, function( key, value ) {
+// Add a script to the page, then run a function defined in it
+$.getScript( "/static/js/myScript.js", function() { 
+    functionFromMyScript();
+});
+// Get JSON-formatted data from the server
+$.getJSON( "/details.php", function( resp ) { 
+    $.each( resp, function( key, value ) { // Log each key in the response data 
         console.log( key + " : " + value );
     });
 });
 ```
 
-
-
 # Typescript
 
-È un superset di Javascript. TypeScript si basa su JavaScript. Per prima cosa, scrivi il codice TypeScript. Quindi, compili il codice TypeScript in codice JavaScript semplice utilizzando un compilatore TypeScript. Una volta che hai il codice JavaScript semplice, puoi distribuirlo in qualsiasi ambiente in cui viene eseguito JavaScript.
-
-
-TypeScript utilizza le sintassi JavaScript e aggiunge sintassi aggiuntive per supportare i tipi. Se hai un programma JavaScript che non presenta errori di sintassi, è anche un programma TypeScript. Significa che tutti i programmi Js sono programmi TypeScript.
+È un superset di Javascript. TypeScript si basa su JavaScript, dopo aver compilato il file TypeScript. TypeScript utilizza le sintassi JavaScript e aggiunge sintassi aggiuntive per supportare i tipi:
 
 - Supporta le altre librerie di Js
-- Js è Ts
+- Js è Ts (il risultato di un ts compilato è un file js)
 - Ts è portable, può essere runnato in ogni ambiente dove è possibile a sua volta runnare Js
 - È più leggibile
 - È più esplicito
@@ -1149,9 +1139,9 @@ TypeScript utilizza le sintassi JavaScript e aggiunge sintassi aggiuntive per su
 
 ## Type
 
-Typescript usa le type annotation per specificare esplicitamente i tipi per gli identificatori come variabili, funzioni, oggetti, etc. Typescript usa la sintassi `:type`dopo un identificatore come type annotation che può essere qualsiasi tipo valido. Una volta che l'identificatore è annotato con un tipo, può essere usato solo da quel tipo (altrimenti il compilatore ritornerà un errore)
+Typescript usa le type annotation per specificare esplicitamente i tipi per gli identificatori come variabili, funzioni, oggetti, etc. Typescript usa la sintassi `:type` dopo un identificatore come type annotation che può essere qualsiasi tipo valido. Una volta che l'identificatore è annotato con un tipo, può essere usato solo da quel tipo (altrimenti il compilatore ritornerà un errore)
 
-```
+```js
 let variableName: type;
 let variableName: type = value;
 const constantName: type = value;
@@ -1161,7 +1151,7 @@ In questa sintassi, l'annotazione dei tipi viene dopo il nome della variabile (o
 
 <b>Primitives</b>
 
-```
+```js
 let name: string = 'John';
 let age: number = 25;
 let active: boolean = true;
@@ -1169,14 +1159,14 @@ let active: boolean = true;
 
 <b>Arrays</b>
 
-```
+```js
 let arrayName: type[];
 let names: string[] = ['Pippo', 'Pluto'];
 ```
 
 <b>Objects</b>
 
-```
+```js
 type Person = {
   name: string;
   age: number;
@@ -1185,9 +1175,9 @@ type Person = {
 
 <b>Function annotation</b>
 
-Nel seguente esempio è possibile assegnare ogni funzione che accetta una stringa e ritorna la stringa.
+Nel seguente esempio è possibile assegnare ogni funzione che accetta una stringa e la ritorna.
 
-```
+```js
 let greeting : (name: string) => string;
 greeting = function (name: string) {
     return name;
@@ -1196,20 +1186,20 @@ greeting = function (name: string) {
 
 ### Type inference
 
-```
+```js
 let counter = 0;
 // It is equivalent to the following:
 let counter: number = 0;
 ```
 
-Come con le variabili, typescript inferisce il tipo al parametro alla variable di ritorno al tipo del valore di default.
+Come con le variabili, typescript inferisce il tipo al parametro della variable di ritorno al tipo del valore di default.
 
-```
+```js
 function increment(counter: number){
     return counter++;
 }
 
-//It is same as:
+//it is same as:
 
 function increment(counter: number) => number {
     return counter++;
@@ -1226,8 +1216,7 @@ Per inferire l'array di items, typescript ha la necessità di considerare il tip
 
 #### Tipi primitivi
 
-Tutti i numeri in typescript sono floating-point o big integers. I numeri floating-points hanno il tipo number mentre gli interi bigint
-
+Tutti i numeri in typescript sono **floating-point** (tipo `number`) o **big integers** (tipo `bigint`):
 - `number`
 - `bigint`
 - `string`
@@ -1246,7 +1235,7 @@ Una tupla lavora come un array lavora con alcune considerazioni addizionali.
 - Il numero degli elementi in una tupla è fisso
 - I tipi degli elementi sono conosciuti e non hanno bisogno di essere gli stessi
 
-Per esempio, è possibile usare una tupla per rappresentare un valore come coppia di `string` e `number`. L'ordine dei valori in una tupla è importante in quanto se si cambiasse l'ordine si otterrebbe un errore. Per questa ragione, è una buona pratica usare le tuple con i dati che sono relative ad ogni altra in un ordine specifico.
+Per esempio, è possibile usare una tupla per rappresentare un valore come coppia di `string` e `number`. L'ordine dei valori in una tupla è importante in quanto se cambiato si otterrebbe un errore: per questa ragione, è una buona pratica usare le tuple con i dati che sono relative ad ogni altra in un ordine specifico.
 
 
 #### Type enum
@@ -1260,7 +1249,7 @@ Un enum è un gruppo di valori constanti. Sta per <b>enumerated type</b>, per de
 
 È buona pratica usare i valori costanti definiti dagli enums nel codice. Definisce il valore numerico di membri enum basati sull'ordine dei membri che appaiono nella definizione di enum, è possibile esplicitare questi numeri per i membri dell'enum
 
-```
+```js
 enum Month {
     Jan = 1,
     Feb,
@@ -1271,39 +1260,38 @@ enum Month {
 
 #### Type any
 
-Il tipo `any` permette di assegnare un qualsiasi valore ad ogni variabile. Se si dichiara una variabile senza specificare il valore, typescript assegnerà il valore any.
+Il tipo `any` permette di assegnare un qualsiasi valore ad ogni variabile (tipo assegnato di default se non si assegna alcun valore).
 
 #### Type void
 
-Tipicamente usato quando una funzione, ad esempio, non ritorna un valore
-
-```
+```js
 function log(message): void {
     console.log(message);
 }
 ```
 
-È buona pratica aggiungere il tipo void come ritorno di una funzione o un metodo che non ritorna alcun valore. In particolare:
-- si migliora la chiarezza del codice
-- assicura che sia type-safe: non verrà mai assegnata la funzione con valore di ritorno voi ad una variabile.
+È buona pratica aggiungere il tipo `void` come ritorno di una funzione o un metodo che non ritorna alcun valore. In particolare:
+- migliora la chiarezza del codice
+- assicura che sia **type-safe**: non verrà mai assegnata la funzione con valore di ritorno voi ad una variabile.
 Nota: se si utilizza il tipo void per una variabile, è possibile assegnare solo il valore undefined.
 
 #### Type never
 
-Il tipo never è un tipo che non contiene valori. Per via di ciò, non si può assegnare alcun valore con il tipo never. TTipicamente viene utilizzato per rappresentare il valore di ritorno di una funzione che ritorna sempre un errore
+Il tipo never è un tipo che non contiene valori. Per via di ciò, non si può assegnare alcun valore con il tipo never. TTipicamente viene utilizzato per rappresentare il valore di ritorno di una funzione che ritorna sempre un errore:
 
-```
+```js
 function raiseError(message: string): never {
     throw new Error(message);
 }
 ```
+
 Le variabili possono anche acquisire il tipo `never` quando si restringe il tipo del tipo che non può essere mai vero.
 
 #### Type union
 
 Descrive un valore che può essere di diversi tipi. Ad esempio
 
-```
+```js
 function add(a: number | string, b: number | string){
     if (typeof a === 'number' && typeof b === 'number'){
         return a + b;
@@ -1323,25 +1311,27 @@ Permettono di creare dei nuovi nomi per tipi esistenti.
 
 È utile per creare tipi di alias per union types, ad esempio
 
-`type alphanumeric = string | number;`
-`let input: aplhanumeric;`
-`input = 100; // valid`
-`input = 'Hi'; // valid`
-`input = false; // compiler error`
+```js
+type alphanumeric = string | number;
+let input: aplhanumeric;
+input = 100; // valid
+input = 'Hi'; // valid
+input = false; // compiler error
+```
 
 
 #### Type literal string
 
-String literal types permette di definire un tipo che accetta solo una specifica string literal.
+String literal types permette di definire un tipo che accetta solo una specifica **string literal**.
 
 `let click: 'click';`
 
-Il `click`è una string literal type che accettano solo la string literal `click`. Se si assegna la stringa click sarà valido, tuttavia quendo si assegna un altro string literal ed il click ed il compilatore ritorna errore. String literal type è utile per limitare i possibili valori della stringa. Possono essere combinati con gli union type e egli alias che definiscono un finito set di string literal values per una variabile.
+Si ottiene una variabile che accetta solo la string literal `click`. Se si assegna la stringa click sarà valido, tuttavia quendo si assegna un altro string literal ed il click ed il compilatore ritorna error:. **string literal type** è utile per limitare i possibili valori della stringa. Possono essere combinati con gli union type e egli alias che definiscono un finito set di string literal values per una variabile.
 
 ## Parametri opzionali
 
 Javascript supporta i parametri opzionali di default. Il compilatore controlla:
-- Il numero degli argomenti è diverso dal numero di parametri specificati nella funzione
+- Il numero degli argomenti è diverso dal numero di parametri specificati nella funzione;
 - Il tipo degli argomenti non sono compatibili con quelli dati come la funzione dei parametri
 
 Per fare si che il parametro sia opzionale basta anteporre `?`.
@@ -1351,12 +1341,12 @@ Per fare si che il parametro sia opzionale basta anteporre `?`.
 Un parametro rest permette che una funzione accetti zero o più argomenti sul tipo specifico. Nel typescript, seguono le seguenti regole:
 
 - Una funzione ha solo un rest parameter
-- Il parametro rest appaie alla fine nella lista dei parametri
-- Il tipo del rest parameter è di tipo array
+- Il parametro rest appare alla fine nella lista dei parametri
+- Il tipo del rest parameter è `array`
 
 Per dichiararlo è necessario anteporre al nome del parametro tre punti ed usare l'array type annotation
 
-```
+```js
 function fn(...rest: type[]){
     //...
 }
@@ -1372,7 +1362,7 @@ Il numero di parametri richiesti <u>deve essere lo stesso</u>. Se un overload ha
 
 Javascript non ha un concetto di classe come gli altri linguaggi di programmazione. ES6 permette di definire una classe come semplice zucchero sintattico per creare un costruttore ed una funzione. Typescript aggiunge le type annotation e le proprietà sui metodi e le classi
 
-```
+```js
 class Person {
     firstName: string;
     year: number;
@@ -1399,17 +1389,18 @@ Possono cambiare la visibilità delle properties e dei metodi di una classe. Not
 
 - `protected` modiﬁer consente alle proprietà e ai metodi di una classe di essere accessibili all'interno stessa classe e all'interno di sottoclassi. Quando una classe (classe figlia) eredita da un'altra classe (classe genitore), è una sottoclasse di classe genitore.
 
-Typescript ha introdotto `readonly` modificatore che permette di contrassegnare le proprietà di una classe immutabile. L'incarico ad a sola lettura la proprietà può verificarsi solo in uno dei due posti, nella dichiarazione di proprietà e nel costruttore della stessa classe.
+Typescript ha introdotto il modificatore `readonly` che permette di contrassegnare le proprietà di una classe immutabile. L'incarico ad a sola lettura la proprietà può verificarsi solo in uno dei due posti, nella dichiarazione di proprietà e nel costruttore della stessa classe.
 
 #### Getter e setter
 
 Permettono di controllare l'accesso a properties della classe:
-- un metodo getter ritorna il valore della poperties. Un getter è detto anche accessor
+- un metodo getter ritorna il valore della poperties. Un getter è detto anche **accessor**
 - Un metodo setter aggiorna il valore delle properties, chiamato anche mutator
 
 #### Ereditarietà
 
-La classe eredita properties e metodi è chiamata classe figlio, mentre la classe i cui metodi e proprietà sono ereditate è detta parent.
+- Classe **figlio** eredita properties e metodi;
+- Classe **parent**: i cui metodi e proprietà sono ereditate.
 
 Per ereditare una classe basta utilizzare la kewyord `extends`. Per chiamare il costruttore della classe parent dentro la classe child basta usare `super()`. I metodi vanno richiamati con `super.nomeMetodo()`
 
@@ -1418,14 +1409,12 @@ Per ereditare una classe basta utilizzare la kewyord `extends`. Per chiamare il 
 Una proprietà statica è condivisa tra tutte le istanze della classe. Per dichiarare una proprietà static, è necessario usare la kewyord `static`. Per accedere ad una proprietà statica basta utilizzare `className.propertyName`. Il metodo statico è anche condiviso tra le istanze della classe
 
 ##### Abstract
-
-Tipicamente usato per definire comportamenti comuni per le classi derivate da estendere. Una classe astratta non può essere istanziata direttamente, per utilizzarla è necessario usare la keyword `abstract`. Tipicamente una classe astratta contiene uno o più metodi astratti che non contengono implementazione. Definisce solo la firma del metodo senza implementare il metodo.
-
+Definisce solo la firma del metodo senza implementare il metodo, tipicamente usato per definire comportamenti comuni per le classi derivate da estendere. Una classe astratta non può essere istanziata direttamente, per utilizzarla è necessario usare la keyword `abstract`. Tipicamente contiene uno o più metodi astratti che non contengono implementazione. 
 ##### Interface
 
 Permettono di descrivere tipi di funzioni. Per descrivere un tipo di funzione, è necessario assegnare l'interfaccia alla signare function che contiene la lista di parametri con i tipi ed i valori di ritorno.
 
-```
+```js
 interface StringFormat {
     (str: string, isUpper: boolean): string
 }
@@ -1437,22 +1426,21 @@ format = function (str: string, isUpper: boolean){
 }
 
 console.log(format('hi', true));
-
 ```
 
-Serve per definire un contratto tra classi non collegate. Per estendere un'interfaccia basta usare `extends`. Un'interfaccia può estendere interfacce multiple, creando una combinazione tra tutte le interfacce. L'interfaccia eredita le proprietà ed i metodi della classe, può anche ereditare i membri protetti e private della classe, non solo i pubblici. Quindi l'interfaccia può essere implementata solo da quella classe o sottoclassi di quella classe da cui si estende l'interfaccia.
+Serve per definire un **contratto** tra classi non collegate. Per estendere un'interfaccia basta usare `extends`. Un'interfaccia può estendere interfacce multiple, creando una combinazione tra tutte le interfacce. L'interfaccia eredita le proprietà ed i metodi della classe, può anche ereditare i membri protetti e private della classe, non solo i pubblici. Quindi l'interfaccia può essere implementata solo da quella classe o sottoclassi di quella classe da cui si estende l'interfaccia.
+
+https://dotnetpattern.com/typescript-abstract-class#:~:text=A%20TypeScript%20Abstract%20class%20is,the%20functionality%20of%20base%20class.
 
 ## Type casting
 
 Non ha concetti di type casting perche le variabili hanno tipi dinamici. È comunque possibile convertire una variabile da tipi ad un altro. È possibile usare la keyword `as` o l'operatore `<>`. Inoltre, la parola chiave o l'operatore di casting possono essere utilizzati per l'asserzione del tipo o il restringimento del tipo.
 
-```
-
+```js
 let input = document.querySelect('input["type=text"]');
 let enteredText = ( input as HTMLInputElement).value;
 
 let input = <HTMLInputElement>document.querySelector('...');
-
 ```
 
 # Frontend
