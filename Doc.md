@@ -276,6 +276,349 @@ Il tag button definisce un bottone cliccabile. Dentro un elemento button è poss
 
 # CSS
 
+Cascading Style Sheet: usato per formattare il layout di una pagina web. Utilizza i selettori per accedere agli elementi dell'albero HTML. **Style sheet** è una lista di regole, ogni regola consiste in uno o più selettori ed un declaration block
+
+```
+[SELECTORs] { /* declaration block */
+
+    /* list of rules*/
+    {key}: {value};
+    ...
+}
+```
+
+# Simple class selectors
+
+### Selectors
+
+Usati per selezionare gli elementi HTML a cui si deve dare uno stile. Vi è una grande varietà di selettori CSS disponibile, consente di assegnare con precisione gli elementi a cui dare lo stile:
+- Element selector
+- Simple selector
+- Attribute selector
+- Pseudo class selector
+- Pseudo element selector
+- Combinators and multiple selectors
+
+Esempio di selettore case insentive che assegna uno stile a tutti i relativi elementi
+
+```CSS
+p {
+    color: red;
+}
+```
+
+### Class selectors (simple)
+
+```CSS
+.classname {
+    key: value;
+}
+```
+
+```HTML
+    <p class="classname1 classname2 ..."></p>
+```
+
+- classname: classe del nome di ogni valore senza spazi aggiunge una classe HTML
+- Gli elementi multipli in un documento possono avere lo stesso class value
+- un elemento singolo può avere classi multiple separate da uno spazio bianco
+
+### ID selector (simple)
+
+`#idName`
+
+Un # seguito dall'ID name di n dato elemento. Un elemento può avere **un solo**. È il metodo più efficiente per selezionare un elemento singolo.
+
+```
+#idName {
+    key: value;
+    ...
+}
+```
+
+```HTML
+    <p id="idName"></p>
+```
+
+### Universal selector
+
+```CSS
+*{
+    key: value;
+}
+```
+
+Permette di selezionare tutti gli elementi in una pagina. Raramente utilizzato per applicare uno stile a tutti gli elementi su una pagina, spesso usato in combinazione con altri selectors.
+Il suo utilizzo in pagine grandi può avere un impatto percettibile sulle performance, il suo caricamento può essere più lento.  Non ci sono molti casi in cui conviene usarlo.
+
+## Selectors combinators 
+
+In CSS, i combinators permettono di combinare selezioni multiple insieme che permette di selezionare elementi dentro altri elementi o adiacenti ad altri:
+- **Descendant selectors**: rappresentati da uno spazio tra le i selettori, permettono di selezionare elemento dentro un altro (non necessariamente un diretto discendente)
+- **Child selector** `>`: permette di selezionare un elemento che è immediatamente figlio di un altro elemento
+- **Fratello adiacente** `+`: permette di selezionare un elemento che è l'immediato fratello di un altro (ad esempio immediatamente a destra di questo, allo stesso livello della gerarchia)
+- **Fratello generale** (general sibling selector) `~`: permette di selezionare ogni elementi che sono fratelli di un altro (ad esempio allo stesso livello della gerarchia, ma non necessariamnte accanto)
+
+```CSS
+section p {
+  color: blue;
+}
+
+section > p {
+  background-color: yellow;
+}
+
+h2 + p {
+  text-transform: uppercase;
+}
+
+h2 ~ p {
+  border: 1px dashed black;
+}
+```
+
+## Multiple selectors
+
+È possibile scrivere selettori multipli separati da virgola per applicare le stesse regole a stessi elementi
+
+```CSS
+h2 ~ p {
+  border: 1px dashed black;
+}
+```
+
+## Attribute
+
+Gli attribute selectors sono un tipo speciale di selettori che corrisponderà ai loro attributi e ai valori. La sintassi generica consiste in delle parentesi quadre `[]` che contengono il nome dell'attributo seguito da una condizione opzionale che corrisponde al valore dell'attributo. I selettori attributo possono essere divisi in due categorie: presence e substring (ed i rispettivi valori)
+
+`[name_of_attr]` : selezionerà tutti gli elementi con il `name_of_attr` qualsiasi sia il suo valore
+
+`[attr=val]`: selezionerà tutti gli elementi con l'attributo `attr` ma solo se il suo valore è val
+
+`[attr~=val]`: selezionerà tutti gli elementi con `attr`, ma solo se il valore val è separato dallo spazio della lista dei valori contenuti nel valore di attr
+
+## Pseudo class
+
+È una keyword preceduta dai due punti `:` che è aggiunta alla fine dei selettori per specificare che si vuole stilizzare gli elementi selezionati solo quando sono in un certo stato. 
+
+```CSS
+classname:active { /**/ }
+classname:checked { /**/ }
+classname:disabled { /**/ }
+classname:empty { /**/ }
+classname:enabled { /**/ }
+classname:first { /**/ }
+classname:focus { /**/ }
+classname:hover { /**/ }
+classname:not() :nth-child() :nth-last-child() { /**/ }
+classname:read-only :required :visited { /**/ }
+```
+
+Gli pseudo elementi sono come pseudo classi, ma hanno differenze. Sono keywords precedute da due colonne che possono essere aggiunte alla fine di selettori per selezionare una certa parte di un elemento
+
+```CSS
+::after
+::before
+::first-letter
+::first-line
+::selection 
+::backdrop
+
+/* All elements with an attribute "href", which values
+   start with "http", will be added an arrow after its
+   content (to indicate it's an external link) */
+[href^=http]::after { 
+    content: '⤴';
+}
+
+```
+
+## Rules
+
+### Color values
+
+Può essere dichiarato come:
+
+```CSS
+Text : tomato
+RGB : rgb(255, 99, 71)
+HEX : #ff6347
+HSL : hsl(9, 100%, 64%)
+RGBA : rgba(255, 99, 71, .5) //trasparent
+HSLA : hsla(9, 100%, 64%, .5) //trasparent
+```
+
+### Text color
+
+La proprietà color setta il colore del contenuto in primo piano dell'elemento selezionato (solitamente un testo ma può essere anche una coppia di altre cose, come l'underline o l'overline su un testo usando la proprietà text-decoration)
+
+```CSS
+p {
+    color: #f000;
+}
+
+```
+
+### Text decoration
+
+Specifica l'aspetto delle linee decorative usate sul testo.
+
+```CSS
+ /* Keyword values */
+text-decoration: none;                /* No text decoration */
+text-decoration: underline red;       /* Red underlining */
+text-decoration: underline wavy red;  /* Red wavy underlining */
+
+/* Global values */
+text-decoration: inherit;
+text-decoration: initial;
+text-decoration: unset;
+
+```
+
+Per settare decorazioni individuali su singole dichiarazioni utilizzare: `text-decoration-line`, `text-decoration-color`, and `text-decoration-style`.
+
+### Test transform
+
+```CSS
+ /* Keyword values */
+text-transform: capitalize;
+text-transform: uppercase;
+text-transform: lowercase;
+text-transform: none;
+/* Global values */
+text-transform: inherit;
+text-transform: initial;
+text-transform: unset;
+```
+
+### Text shadow
+
+Aggiunge ombre al testo. Ogni ombra è descritta dalla combinazione di offset X e Y dall'elemento
+
+```CSS
+/* offset-x | offset-y | blur-radius | color */
+text-shadow: 1px 1px 2px black;
+/* offset-x | offset-y | color */
+text-shadow: 5px 5px #558ABB;
+/* offset-x | offset-y
+/* Use defaults for color and blur-radius */
+text-shadow: 5px 10px;
+/* Global values */
+text-shadow: inherit;
+text-shadow: initial;
+text-shadow: unset;
+```
+
+### Text align
+
+Come il testo è allineato al relativo blocco padre. Non controlla l'allineamento degli elementi del blocco ma solo il loro contenuto inline
+
+```CSS
+ /* Keyword values */
+text-align: left;
+text-align: right;
+text-align: center;
+text-align: justify;
+/* Global values */
+text-align: inherit;
+text-align: initial;
+text-align: unset;
+```
+
+### Line height
+
+La proprietà line-height imposta la quantità di spazio utilizzata per le righe, ad esempio nel testo. Negli elementi a livello di blocco, specifica l'altezza minima delle caselle di riga all'interno dell'elemento. Negli elementi in linea non sostituiti, specifica l'altezza utilizzata per calcolare l'altezza del box linea.
+
+```CSS
+/* Keyword value */
+line-height: normal;
+/* <length> values */
+line-height: 30px;
+/* <percentage> values */
+line-height: 34%;
+/* Global values */
+line-height: inherit;
+line-height: initial;
+line-height: unset;
+```
+
+### Letter spacing
+
+Proprietà che specifica il comportamento della spaziatura tra caratteri di testo (same for `word-spacing`)
+
+```CSS
+/* <length> values */
+letter-spacing: 0.3em;
+letter-spacing: 3px;
+letter-spacing: .3px;
+/* Keyword values */
+letter-spacing: normal;
+/* Global values */
+letter-spacing: inherit;
+letter-spacing: initial;
+letter-spacing: unset;
+
+```
+### Font size
+
+La proprietà font-size specifica la dimensione del carattere. L'impostazione della dimensione del carattere può modificare la dimensione di altri elementi, poiché viene utilizzata per calcolare il valore delle unità em ed ex.
+
+```CSS
+ /* <relative-size> values */
+font-size: smaller;
+font-size: larger;
+/* <length> values */
+font-size: 12px;
+font-size: 0.8em;
+/* Global values */
+font-size: inherit;
+font-size: initial;
+font-size: unset;
+```
+
+
+### Font weight
+
+Specifica il peso (o il grassetto) del carattere. I pesi dei caratteri disponibili dipenderanno dalla famiglia di caratteri utilizzata. Alcuni tipi di carattere sono disponibili solo in normale e in grassetto.
+
+```CSS
+/* Keyword values */
+font-weight: normal;
+font-weight: bold;
+/* Keyword values relative to the parent */
+font-weight: lighter;
+font-weight: bolder;
+/* Numeric keyword values */
+font-weight: 100;
+font-weight: 200;
+/* Global values */
+font-weight: inherit;
+font-weight: initial;
+```
+
+### Font family
+
+La proprietà CSS della famiglia di font specifica un elenco prioritario di uno o più nomi di famiglia di font e/o nomi di famiglia generici per l'elemento selezionato.
+
+```CSS
+/* A font family name and a generic family name */
+font-family: Gill Sans Extrabold, sans-serif;
+font-family: "Goudy Bookletter 1911", sans-serif;
+/* A generic family name only */
+font-family: serif;
+font-family: sans-serif;
+font-family: monospace;
+font-family: cursive;
+font-family: fantasy;
+font-family: system-ui;
+/* Global values */
+font-family: inherit;
+font-family: initial;
+font-family: unset;
+```
+
+
 # JavaScript
 
 JavaScript è un linguaggio di programmazione che permette di implementare cose complesse sulle web pages:
