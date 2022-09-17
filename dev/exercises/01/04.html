@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Exercise 4</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+
+    .navbar { /* non è necessario un div ma un ul!!! */
+        display: flex; /* è questo che cambia l'ordine della visualizzazione della lista !! */
+        background-color: lightskyblue;
+        flex-flow: row wrap;
+        justify-content: flex-end;
+        list-style: none;
+        margin: 0;        
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+        display: block; /* è questo quello che fa venire l'effetto !! */
+        padding: 1em;
+        color: white;
+    }
+    .navbar a:hover{
+        background: blue;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        margin-top: 5%;
+    }
+
+    .info {
+        background-color: aquamarine;
+    }
+
+    /* Media Query for Mobile Devices */
+    @media all and (max-width: 600px)  {
+        .navbar {
+            flex-flow: column wrap;
+            padding: 0;
+        }
+        .navbar a { 
+            text-align: center; 
+            padding: 10px;
+            border-top: 1px solid rgba(255, 255, 255,0.3); 
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1); 
+        }
+        .navigation li:last-of-type a {
+            border-bottom: none;
+        }
+    }
+    
+    /* Media Query for Tablets Ipads portrait mode */
+    @media all and (min-width: 601px) and (max-width: 800px) {
+        .navbar {
+            justify-content: center;
+        }
+
+    }
+
+    .grid-container {
+        display: grid;
+        gap: 10px;
+        padding: 10px;
+        grid-template-areas:
+            'header header header header header header' 
+            'sidebar sidebar main main main main'
+            'footer footer footer footer footer footer';
+    }
+
+    .grid-container > div { /* child selector: seleziona un elemento immediatamente figlio */
+        /* background-color: rgba(255, 255, 255, 0.8); */
+        padding: 0.5rem 1rem;
+        font-size: 30px;
+    }
+
+    .grid-container > .item1, .grid-container > .item4 {
+        display: flex;
+        align-items: flex-start;
+        border: 2px solid black;
+        border-color: lightskyblue;
+        border-radius: 1rem;
+        padding-left: 2rem;
+        background-color: lightseagreen;
+    }
+
+    .item1 {
+        grid-area: header; /* NOTA BENE: ricorda che è senza apici !!!*/
+    }
+
+    .item2 {
+        grid-area: sidebar;
+        border-right: 1px solid black;
+    }
+
+    .item3 {
+        grid-area: main;
+    }
+
+    .item4 {
+        grid-area: footer;
+    }
+
+    .item1 > p, .item2 > p, .item3 > p, .item4 > p {
+        font-size: 1rem;
+    }
+
+    .item1 > h1, .item2 > h1, .item3 > h1, .item4 > h1 {
+        font-size: 3rem;
+    }
+
+
+</style>
+</head>
+
+<body>
+    <div>
+        <ul class="navbar">
+            <li><a href="">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Products</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+    </div>
+
+
+    <div class="grid-container">
+        <div class="item1">
+            <p>This is my lovely blog</p>
+        </div>
+        <div class="item2">
+            <h1>Other things</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum massa vel odio elementum, et sodales elit hendrerit. Integer enim massa, dapibus eu sapien ac, iaculis ornare felis. Sed ornare dui eu magna suscipit tincidunt id eget mi.</p>
+    
+        </div>
+        <div class="item3">
+            <h1>My article</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc elementum massa vel odio elementum, et sodales elit hendrerit. Integer enim massa, dapibus eu sapien ac, iaculis ornare felis. Sed ornare dui eu magna suscipit tincidunt id eget mi. Nunc viverra scelerisque ligula, id malesuada orci. In placerat ultrices pretium. Quisque et ullamcorper justo. Donec at massa ut nisl facilisis condimentum ut at elit. Maecenas at lacinia odio, eget aliquam odio. Sed a enim et diam varius sodales nec a nunc. Sed id erat eget leo blandit laoreet eget ut tellus. Fusce a dapibus lacus. Sed quam sem, hendrerit eu odio sed, placerat cursus augue. Nullam ut dui sed dolor egestas aliquam. Sed gravida elementum hendrerit. Fusce suscipit erat nec lorem facilisis eleifend. Nullam porttitor iaculis tortor, in sagittis elit facilisis id. Nam bibendum sed odio faucibus scelerisque. Vestibulum feugiat ex ut maximus imperdiet. Donec vulputate nulla eu urna efficitur, ac posuere tortor feugiat. Cras tristique porttitor tempor. Nam turpis purus, fringilla in elementum et, hendrerit quis erat. Phasellus eu nisi tempor, varius risus sit amet, ultricies tellus. Maecenas id nisl a orci dapibus faucibus non quis est.</p>
+        </div>
+        <div class="item4">
+            <p>Contact me mysite@mail.it</p>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>
