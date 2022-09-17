@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sample project </title>
+
+<link rel="stylesheet" href="./assets/css/style1.css">
+
+</head>
+
+<body>
+    <h1>Sample h1</h1>
+
+    <!-- in questo modo sarà sovrascritto dagli altri metodi! -->
+    <button id="btn-1" onclick="console.log('Using attribute in HTML!');">Button 1</button>
+
+    <!-- <script src="./assets/js/script1.js"></script> -->
+    <script>
+        // 3 ways to register event handlers for a DOM event
+        // seleziona un elemento usando una dom interface
+
+        // carica sempre quando carica tutta la window!
+        window.onload = () => {
+            console.log("Document loaded")
+        }
+
+        // method1: usando addEventListener
+        // prima seleziono l'elemento dall'HTML
+        let btn1 = document.getElementById("btn-1")
+
+        // utilizzando una async callbak!
+        btn1.addEventListener('click', () => {
+            console.log("Using event listener addEventListener")
+
+            let parag = document.createElement('p');
+            parag.textContent = 'This is a dynamic paragraph created by addEventListener';
+            document.body.append(parag)
+        })
+
+
+        // method 2 usando l'elemento event function
+        btn1.onclick = function(event) {
+            // console.log(event);
+            console.log("Using onclick element!")
+        }
+        // method 3: usando l'attributo dall'elemento HTML
+        // oppure <button onclick="...">
+
+
+
+        let dynamicDiv = document.createElement("div");
+        
+        dynamicDiv
+
+
+    </script>
+</body>
+
+</html>
