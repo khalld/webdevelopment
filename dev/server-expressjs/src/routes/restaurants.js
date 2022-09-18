@@ -10,7 +10,6 @@ const { ObjectId } = require("mongodb");
 const mdws = require('../middleware/logger.js');
 
 router.get('/restaurants', mdws.logger, async (req, res) => {
-
     const dbConnection = db.getDb();
 
     dbConnection
@@ -62,7 +61,8 @@ router.post('/restaurants', async (req, res) => {
             } else {
                 // TODO: il result ritorna un elemento utile per verificato se hai modificato qualcosa, quindi potresti prendere info da lì per migliorare la risposta!
                 console.log(`Added new restaurant with name ${req.body.name} and id ${req.body._id}`)
-                res.status(204).send();
+                res.status(204)
+                res.send();
             }
         })
 })
@@ -81,13 +81,15 @@ router.post('/restaurants/:id', async (req, res) => {
         .collection("restaurants")
         .updateOne(query, updates, function(err, result)  {
             if (err) {
-                res.status(400).send(`Error updating restaurant with id ${query._id}`);
+                res.status(400);
+                res.send(`Error updating restaurant with id ${query._id}`);
             } else {
                 // TODO: il result ritorna un elemento utile per verificato se hai modificato qualcosa, quindi potresti prendere info da lì per migliorare la risposta!
                 console.log(`Edit restaurant with id  ${query._id} with name ${req.body.name}`)
                 // invece di ritornare un 204 NO-content ritorno le informazioni della result!
                 // ricorda che json() permette di ritornare un json direttamente!
-                res.status(200).json(result);
+                res.status(200);
+                res.json(result);
 
             }
         })

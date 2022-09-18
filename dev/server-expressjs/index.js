@@ -7,8 +7,6 @@ const app = express();              //Instantiate an express app, the main work 
 
 const restaurantRouter = require("./src/routes/restaurants");
 
-// console.log(__dirname);
-
 // performs database connection when the server starts
 db.connectToServer(function(err) {
     if (err){
@@ -21,10 +19,21 @@ db.connectToServer(function(err) {
 app.use(express.urlencoded({extent: false}));
 app.use(express.json());
 
+// necessario per 'serving' static files
+app.use(express.static('static'));
+
+// ritorna automaticamente l'index.html sotto /static
+// automaticamente sarà possibile andare sottto /sub
+// se vi è un subpath uguale ad un API quest'ultima andrà sovrascritta
+app.get('/', (req, res) => {
+    res.status(200);
+    res.send('Hello World!');
+})
+
 // load Express.js router
 // per interrogare l'API è necessario anteporre /api a tutto il path dentro restaurantRouter
 // possibile anche passare "", la best practice sarebbe dare solo i params al router ed assegnare qui il path
-app.use("/api", restaurantRouter);
+app.use("", restaurantRouter);
 
 app.listen(env.port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
     console.log(`Now listening on port ${env.port}`); 
