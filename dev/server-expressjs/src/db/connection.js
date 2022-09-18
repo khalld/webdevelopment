@@ -1,11 +1,7 @@
 const { MongoClient } = require('mongodb');
-
-const dbUsr = "admin"
-const dbPwd = "admin"
-const deployDb = "mongo01"
-
+const credentials = require('./credentials.js');
 // Connection URI
-const uri = `mongodb+srv://${dbUsr}:${dbPwd}@${deployDb}.nrnquyl.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${credentials.dbUsr}:${credentials.dbPwd}@${credentials.deployDb}.nrnquyl.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a new MongoClient
 const client = new MongoClient(uri);
@@ -18,12 +14,8 @@ module.exports = {
             if (err || !db ){
                 return callback(err);
             }
-
-            const dbName = "sample_restaurants" // "sample-personal-db"
-
-            dbConnection = db.db(dbName);
-            console.log(`Successfully connected to ${deployDb}, database name: ${dbName}`);
-
+            dbConnection = db.db(credentials.dbName);
+            console.log(`Successfully connected to ${credentials.deployDb}, database name: ${credentials.dbName}`);
             return callback();
         });
     },

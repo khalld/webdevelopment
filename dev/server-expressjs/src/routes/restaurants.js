@@ -1,42 +1,18 @@
-// ----- Example of an express.js server -------
+// Router allows the developers to group the request routes by some logic. Also,
+// they are used typically in the MVC pattern.
 
-const db = require("./assets/js/db.js")
-const express = require('express'); //Import the express dependency
+const express = require("express");
+const router = express.Router();
+const db = require('../db/connection.js');
 const { ObjectId } = require("mongodb");
-const app = express();              //Instantiate an express app, the main work horse of this server
-const port = 8081;                  //Save the port number where your server will be listening
 
-// console.log(__dirname);
+// import like es6. È un oggetto, quindi bisogna utilizzare il . per accedere alle variabili/funzioni
+const mdws = require('../middleware/logger.js');
 
-// performs database connection when the server starts
-db.connectToServer(function(err) {
-    if (err){
-        console.error(error)
-        process.exit()
-    }
-})
-
-// --- Necessari per fare funzionare express con il Body!
-app.use(express.urlencoded({extent: false}));
-app.use(express.json());
-
-app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
-    console.log(`Now listening on port ${port}`); 
-});
-
-//Idiomatic expression in express to route and respond to a client request
-//get requests to the root ("/") will route here
-app.get('/', (req, res) => {
-    //server responds by sending the index.html file to the client's browser
-    //the .sendFile method needs the absolute path to the file, see: https://expressjs.com/en/4x/api.html#res.sendFile 
-    res.sendFile('index.html', {root: __dirname });
-    
-});
-
-app.get('/restaurants', async (req, res) => {
+router.get('/restaurants', mdws.logger, async (req, res) => {
 
     const dbConnection = db.getDb();
-    
+
     dbConnection
         .collection("restaurants")
         .find({})
@@ -53,7 +29,7 @@ app.get('/restaurants', async (req, res) => {
 })
 
 // get single element by single element!
-app.get('/restaurants/:id', async (req, res) => {
+router.get('/restaurants/:id', async (req, res) => {
     const dbConnection = db.getDb();
     const id = req.params.id;
 
@@ -75,7 +51,7 @@ app.get('/restaurants/:id', async (req, res) => {
 })
 
 // create a new element!
-app.post('/restaurants', async (req, res) => {
+router.post('/restaurants', async (req, res) => {
     const dbConnection = db.getDb();
     
     await dbConnection
@@ -91,9 +67,8 @@ app.post('/restaurants', async (req, res) => {
         })
 })
 
-
 // edit an existing element from Id!
-app.post('/restaurants/:id', async (req, res) => {
+router.post('/restaurants/:id', async (req, res) => {
     const dbConnection = db.getDb();
     
     const query = {_id: ObjectId(`${req.params.id}`)};
@@ -110,7 +85,13 @@ app.post('/restaurants/:id', async (req, res) => {
             } else {
                 // TODO: il result ritorna un elemento utile per verificato se hai modificato qualcosa, quindi potresti prendere info da lì per migliorare la risposta!
                 console.log(`Edit restaurant with id  ${query._id} with name ${req.body.name}`)
-                res.status(204).send();
+                // invece di ritornare un 204 NO-content ritorno le informazioni della result!
+                // ricorda che json() permette di ritornare un json direttamente!
+                res.status(200).json(result);
+
             }
         })
 })
+
+// ritorno il semplice oggetto router
+module.exports = router;
