@@ -27,6 +27,8 @@ app.use(express.static('static'));
 // se vi è un subpath uguale ad un API quest'ultima andrà sovrascritta
 app.get('/', (req, res) => {
     res.status(200);
+
+    // in alternativa si potrebbe usare sendFile
     res.send('Hello World!');
 })
 
