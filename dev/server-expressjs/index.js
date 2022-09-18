@@ -13,6 +13,8 @@ db.connectToServer(function(err) {
         console.error(error)
         process.exit()
     }
+    // console.log(process.env)
+
 })
 
 // --- Necessari per fare funzionare express con il Body!
@@ -35,7 +37,7 @@ app.get('/', (req, res) => {
 // load Express.js router
 // per interrogare l'API è necessario anteporre /api a tutto il path dentro restaurantRouter
 // possibile anche passare "", la best practice sarebbe dare solo i params al router ed assegnare qui il path
-app.use("", restaurantRouter);
+app.use("/api", restaurantRouter);
 
 app.listen(env.port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
     console.log(`Now listening on port ${env.port}`); 
