@@ -1,18 +1,24 @@
-const { MongoClient } = require('mongodb');
+// ----- Example of an express.js server -------
+
+const db = require("./assets/js/db.js")
 const express = require('express'); //Import the express dependency
+const { ObjectId } = require("mongodb");
 const app = express();              //Instantiate an express app, the main work horse of this server
 const port = 8081;                  //Save the port number where your server will be listening
 
-const dbUsr = "admin"
-const dbPwd = "admin"
-
-// Connection URI
-const uri = `mongodb+srv://${dbUsr}:${dbPwd}@mongo01.nrnquyl.mongodb.net/?retryWrites=true&w=majority`;
-
-// Create a new MongoClient
-const client = new MongoClient(uri);
-
 // console.log(__dirname);
+
+// performs database connection when the server starts
+db.connectToServer(function(err) {
+    if (err){
+        console.error(error)
+        process.exit()
+    }
+})
+
+// --- Necessari per fare funzionare express con il Body!
+app.use(express.urlencoded({extent: false}));
+app.use(express.json());
 
 app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
     console.log(`Now listening on port ${port}`); 
@@ -27,43 +33,84 @@ app.get('/', (req, res) => {
     
 });
 
+app.get('/restaurants', async (req, res) => {
 
-app.get('/comments', async (req, res) => {
+    const dbConnection = db.getDb();
+    
+    dbConnection
+        .collection("restaurants")
+        .find({})
+        .limit(50)
+        .toArray(function (err, result){
+            if (err){
+                res
+                    .status(400)
+                    .send("Error fetch list! " + err)
+            } else {
+                res.status(200).json(result)                
+            }
+        })
+})
+
+// get single element by single element!
+app.get('/restaurants/:id', async (req, res) => {
+    const dbConnection = db.getDb();
+    const id = req.params.id;
+
+    const query = {_id: ObjectId(`${id}`)};
 
     try {
-        await client.db("mongo01").collection("sample_mflix.comments")
-            .findOne({}, async function(err, result) {
-                    if (err) throw err;
-                    console.log(result);
-                    await client.close();
-            });
-    } catch (error) {
-        console.log(error);
-    }
+        const restaurant = await dbConnection.collection("restaurants").findOne(query)
+    
+        if (restaurant == null){
+            res.status(400).send(`No restaurant wit _id ${id} founded`)
+        } else {
+            res.json(restaurant)
+        }
 
-    // res.send("This is a GET!")
+    } catch (error) {
+        console.error(error)
+    }
 
 })
 
-async function run() {
-    try {
-        // Connect the client to the server (optional starting in v4.7)
-        await client.connect();
-        // Establish and verify connection
-        await client.db("mongo01").command({ ping: 1 });
-        console.log("Connected successfully to server");
-    } finally {
-        // Ensures that the client will close when you finish/error
-        console.log("pippo!")
-        // await client.close();
+// create a new element!
+app.post('/restaurants', async (req, res) => {
+    const dbConnection = db.getDb();
+    
+    await dbConnection
+        .collection("restaurants")
+        .insertOne(req.body, function(err, result) {
+            if (err) {
+                res.status(400).send("Error inserting restaurant!");
+            } else {
+                // TODO: il result ritorna un elemento utile per verificato se hai modificato qualcosa, quindi potresti prendere info da lì per migliorare la risposta!
+                console.log(`Added new restaurant with name ${req.body.name} and id ${req.body._id}`)
+                res.status(204).send();
+            }
+        })
+})
+
+
+// edit an existing element from Id!
+app.post('/restaurants/:id', async (req, res) => {
+    const dbConnection = db.getDb();
+    
+    const query = {_id: ObjectId(`${req.params.id}`)};
+    const updates = {
+        $set: {
+            name: req.body.name
+        }
     }
-}
-
-// TODO: una GET
-
-// TODO: una PUT
-
-// TODO: una POST
-
-run().catch(console.dir);
-
+    await dbConnection
+        .collection("restaurants")
+        .updateOne(query, updates, function(err, result)  {
+            if (err) {
+                res.status(400).send(`Error updating restaurant with id ${query._id}`);
+            } else {
+                // TODO: il result ritorna un elemento utile per verificato se hai modificato qualcosa, quindi potresti prendere info da lì per migliorare la risposta!
+                console.log(`Edit restaurant with id  ${query._id} with name ${req.body.name}`)
+                res.status(204).send();
+            }
+        })
+})

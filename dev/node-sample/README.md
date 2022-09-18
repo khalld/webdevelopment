@@ -9,3 +9,9 @@ Creare una cartella per il progetto, aprire il terminale
 Successivamente
 
 `npm install`
+
+# MongoDb cloud
+
+https://cloud.mongodb.com/
+
+Creare un deploy di database ed aggiungere dei database custom.
