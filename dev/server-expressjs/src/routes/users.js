@@ -10,17 +10,16 @@ const { ObjectId } = require("mongodb");
 router.post('/register', async (req, res) => {
     const dbConnection = db.getDb();
     
-    console.log(req.body)
-
     await dbConnection
         .collection("users")
         .insertOne(req.body, function(err, result) {
             if (err) {
                 res.status(400).send("Error inserting user!");
             } else {
-                console.log(`Registered new user: ${req.body.username}`)
-                res.status(204)
-                res.send();
+                console.log(`Registered new user: ${req.body.name}`)
+                // Non funziona perché viene utilizzata una POST!
+                // res.redirect(204, '/login');1
+                res.status(204).send();
             }
         })
 })
