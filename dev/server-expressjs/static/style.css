@@ -1,0 +1,36 @@
+
+img {
+    width: 50%;
+}
+
+.flex-container {
+    display: flex;
+    background-color: lightcoral;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.flex-container > div {
+    border: 1px solid black;
+    text-align: center;
+    margin: 0.5rem;
+
+}
+
+.flex-container > div > ul {
+    text-align: left;
+}
+
+
+.flex-container > div img {
+    border: 3px solid red;
+    margin: 1rem;
+}
+
+
+@media all and (max-width: 1000px) {
+    .flex-container {   
+        flex-direction: column;
+    }
+
+}
