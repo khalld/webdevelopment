@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>Expressjs Server</title>
+    </head>
+    <body>
+        <h1>Login</h1>
+
+        <form id="register" name="register" action="/register" method="POST">
+            <label for="username">Username</label>
+            <input class="input" id="username" type="text" placeholder="Insert you username">
+            <label for="password">Password</label>
+            <input class="input" id="password" type="password" placeholder="Insert your password">
+            <input type="submit" value="Submit">
+        </form>
+        
+
+        <script>
+
+            const form = document.getElementById('register')
+
+            form.addEventListener('submit', async (event) => {
+                event.preventDefault()
+
+                const username = form.elements['username'].value;
+                const password = form.elements['password'].value;
+
+                fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                })
+                .then(response => response.json())
+                .then(data => console.log(`Data: ${data}`))
+                .catch(err => console.log("Something wrong happened!"))
+                
+            })
+
+            console.log(form)
+
+        </script>
+    </body>
+</html>

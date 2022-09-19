@@ -2,9 +2,6 @@
 // require non esiste a livello di front-end!
 // const db = require("../../src/config/config.js")
 
-
-console.log(process.env);
-
 let datas = [];
 
 window.onload = async () => {
@@ -20,6 +17,7 @@ window.onload = async () => {
     console.log(datas.length)
     if (datas.length > 0){
 
+        // let block scope variable
         let mainDiv = document.getElementById("main-div");
         mainDiv.removeChild(document.getElementById("loading-p"))
 
@@ -28,8 +26,6 @@ window.onload = async () => {
             p.innerHTML = `<b>Restarant cousine</b>: ${datas[i]['cuisine']}`
             mainDiv.appendChild(p);
         }
-
-
     }
 }
 

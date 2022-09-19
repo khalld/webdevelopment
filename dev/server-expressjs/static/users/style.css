@@ -1,0 +1,43 @@
+
+
+#flex-container{
+    display: flex;
+}
+
+.card-container {
+    display: grid;
+    grid-template-areas:
+        'header header' 
+        'avatar text'
+        'avatar footer';
+    border: 1px solid black;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.card-container > .card-footer, .card-container > .card-text {
+    margin-left: 0.5rem;
+}
+
+.card-header {
+    grid-area: header
+}
+
+.card-avatar {
+    grid-area: avatar
+}
+
+.card-text {
+    grid-area: text;
+}
+
+.card-footer {
+    grid-area: footer
+}
+
+@media all and (max-width: 800px) {
+    #flex-container{
+        flex-flow: column-reverse;
+    }
+    
+}
