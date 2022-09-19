@@ -5,7 +5,7 @@
     grid-template-areas: 
         'header header header'
         'sx centro dx'
-        'footer footer footer';
+        'footer footer btn';
     gap: 1rem;
     /* margin: 5rem; */
     padding-top: 5rem;
@@ -39,6 +39,11 @@
 .footer {
     grid-area: footer;
     border: 1px solid green;
+}
+
+.btn {
+    grid-area: btn;
+    border: 1px solid cyan;
 }
 
 @media all and (max-width: 800px) {

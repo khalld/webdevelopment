@@ -42,6 +42,40 @@ router.get('/users/:id/details', async(req, res) => {
     }
 })
 
+router.put('/users/:id/update', async(req, res) => {
+    const dbConnection = db.getDb();
+    const id = req.params.id;
+
+    const query = {_id: ObjectId(`${id}`)}
+
+    const updates = {
+        $set: {
+            name: req.body.name,
+            password: req.body.password
+        },
+    }
+
+    console.log(updates);
+
+    await dbConnection
+        .collection("users")
+        .updateOne(query, updates, function(err, result)  {
+            if (err) {
+                res.status(400);
+                res.send(`Error updating user with id ${query._id}`);
+            } else {
+                // TODO: il result ritorna un elemento utile per verificato se hai modificato qualcosa, quindi potresti prendere info da lì per migliorare la risposta!
+                console.info(`Edited successfully user credentials!`)
+                // invece di ritornare un 204 NO-content ritorno le informazioni della result!
+                // ricorda che json() permette di ritornare un json direttamente!
+                res.status(200);
+                res.json(result);
+
+            }
+        })
+        
+})
+
 router.get('/users/:name', async(req, res) => {
     const dbConnection = db.getDb();
     const name = req.params.name;
