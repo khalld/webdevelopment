@@ -4,6 +4,7 @@ const db = require("./src/db/connection.js")
 const env = require("./src/config/config.js");
 const express = require('express'); //Import the express dependency
 const app = express();              //Instantiate an express app, the main work horse of this server
+const path = require('path');
 
 const restaurantRouter = require("./src/routes/restaurants");
 const usersRouter = require("./src/routes/users");
@@ -34,6 +35,10 @@ app.get('/', (req, res) => {
 
     // in alternativa si potrebbe usare sendFile
     res.send('Hello World!');
+})
+
+app.get('/details/:id', (req, res) => {
+    res.sendFile(path.join(__dirname, "static/details/index.html"))
 })
 
 // load Express.js router

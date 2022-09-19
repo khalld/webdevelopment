@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- <link rel="stylesheet" href="./style.css"> -->
+
+        <title>Expressjs Server</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Details of user: <span id="userid"></span></h1>
+        <div id="response-div" class="container">
+            <div class="header"></div>
+            <div class="sx"></div>
+            <div class="centro"></div>
+            <div class="dx"></div>
+            <div class="footer"></div>
+
+        </div>
+
+        <script>
+            const pathname = window.location.pathname;
+            const id = pathname.substring(pathname.lastIndexOf('/') + 1)
+            var spanId = document.getElementById('userid')
+            spanId.innerHTML = id;
+            spanId.style.color = 'red';
+            var respDiv = document.getElementById("response-div")
+
+            fetch(`/users/${id}/details`, {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+            }).then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+
+                document.getElementsByClassName("header")[0].innerHTML = data._id;
+                document.getElementsByClassName("sx")[0].innerHTML = "Useful info:";
+                document.getElementsByClassName("centro")[0].innerHTML = data.name;
+                document.getElementsByClassName("dx")[0].innerHTML = data.password;
+                document.getElementsByClassName("footer")[0].innerHTML = "Element founded on MongoDb!";
+            })
+            .catch(err => {
+                respDiv.innerHTML = "Something wrong happened!!"
+                spanId.innerHTML = "error"
+            })
+
+        </script>
+    </body>
+</html>

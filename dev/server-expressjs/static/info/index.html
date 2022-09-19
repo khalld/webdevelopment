@@ -9,8 +9,18 @@
     </head>
     <body>
 
-        <h1>Subpath serverd correctly!!</h1>
+        <div class="container">
+            <form id="search-by-name" name="" action="" method="GET">
+                <label for="name">Search a default</label>
+                <input class="input" id="name" type="text" placeholder="Insert a name to search" size="30">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div id="response-div" class="container">
+            <p id="no-content">Nothing founded!</p>
+        </div>
         
-        <!-- <script src="./script.js"></script> -->
+        <script src="./script.js"></script>
     </body>
 </html>

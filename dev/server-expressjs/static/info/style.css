@@ -1,0 +1,16 @@
+label {
+    display:block;
+    margin-bottom: 0.5rem;
+}
+
+.container {
+    border: 1px dotted black;
+    display: flex;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+
+.container > form > label, .container > form > input {
+    flex-direction: column;
+}
