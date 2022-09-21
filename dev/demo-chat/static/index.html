@@ -1,17 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
 
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form id="form" action="">
-      <input id="input" autocomplete="off" /><button>Send</button>
-    </form>
+<head>
+    <title>Socket.IO chat</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <form id="form-login" method="POST" action="">
+            <input type="text" name="username" id="username" placeholder="Insert your username" value="bocca">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
     <script src="/socket.io/socket.io.js"></script>
 
-    <script src="./script.js"></script>
-  </body>
+    <script>
+        var myForm = document.getElementById("form-login")
+        var socket = io();
+        let user;
+
+        myForm.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const username = document.getElementById("username").value;
+
+            // la socket invia la richiesta del set dell'username
+            socket.emit('setUsername', username)
+        });
+
+        // aspetta che l'utente sia settato
+        socket.on('userSetted', function(data){
+            user = data.username;
+
+            document.body.innerHTML = '<input type="text" id="message">\
+                <button type="button" name="button" onclick="sendMessage()">Send</button>\
+                <div id="message-container"></div>';
+        })
+
+        // TODO: da aggiungere 'onError'
+
+        // resto in ascolto del nuovo messaggio
+        socket.on('newmsg', function(data){
+            document.getElementById('message-container').innerHTML +='<div><b>' + data.user + '</b>: ' + data.message + '</div>'
+        })
+
+        // NOTA: Questa funzione è passata nell'onclick generato da userSetted
+        function sendMessage(){
+            const msg = document.getElementById('message').value;
+            if(msg){
+            socket.emit('msg', {message: msg, user: user})
+            }
+        }
+    </script>
+
+</body>
+
 </html>

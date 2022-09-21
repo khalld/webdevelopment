@@ -51,7 +51,7 @@ form.addEventListener("submit", async (event) => {
                 alert("Utente registrato correttamente!");
                 // The problem might not lie with the backend, but with the frontend. If you are using AJAX to send the POST request, it is specifically designed to not change your url.
                 // Use window.location.href after AJAX's request has completed (in the .done()) to update the URL with the desired path, or use JQuery: $('body').replaceWith(data) when you receive the HTML back from the request.
-                window.location.href = "/login";
+                // window.location.href = "/login";
             }
         } else {
             throw "Cannot do! User already exist!";
