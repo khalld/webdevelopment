@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Socket.IO chat</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="" method="POST" id="form-registration">
+            <div class="mb-3">
+                <label for="input-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="input-email" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="input-name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="input-name">
+            </div>
+            <div class="mb-3">
+                <label for="input-surname" class="form-label">Surname</label>
+                <input type="text" class="form-control" id="input-surname">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <!-- <script>
+        var myForm = document.getElementById("form-login")
+        var socket = io();
+        let user;
+
+        myForm.addEventListener("submit", (e) => {
+            e.preventDefault()
+            const username = document.getElementById("username").value;
+
+            // la socket invia la richiesta del set dell'username
+            socket.emit('setUsername', username)
+        });
+
+        // aspetta che l'utente sia settato
+        socket.on('userSetted', function(data){
+            user = data.username;
+
+            document.body.innerHTML = '<input type="text" id="message">\
+                <button type="button" name="button" onclick="sendMessage()">Send</button>\
+                <div id="message-container"></div>';
+        })
+
+        // TODO: da aggiungere 'onError'
+
+        // resto in ascolto del nuovo messaggio
+        socket.on('newmsg', function(data){
+            document.getElementById('message-container').innerHTML +='<div><b>' + data.user + '</b>: ' + data.message + '</div>'
+        })
+
+        // NOTA: Questa funzione è passata nell'onclick generato da userSetted
+        function sendMessage(){
+            const msg = document.getElementById('message').value;
+            if(msg){
+            socket.emit('msg', {message: msg, user: user})
+            }
+        }
+    </script> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

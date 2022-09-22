@@ -9,6 +9,9 @@ const path = require('path');
 const restaurantRouter = require("./src/routes/restaurants");
 const usersRouter = require("./src/routes/users");
 
+import * as fetch from 'node-fetch';
+
+
 // performs database connection when the server starts
 db.connectToServer(function(err) {
     if (err){
