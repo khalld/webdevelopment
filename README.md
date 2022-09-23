@@ -1,6 +1,6 @@
 # webdevelopment
  
-Simple projects made with Vanilla JS for <b>Web Programming, Design & Usability</b> course (University of Catania 2021/2022)
+Simple projects made with Vanilla JS for <b>Web Programming, Design & Usability</b> course (University of Catania 2021/2022 - Department of Computer Science & Mathematics)
 
 <ul>
     <li><a href="https://github.com/khalld/webdevelopment/tree/main/dev/exercises">Various exercises assigned during the course</li></li>
