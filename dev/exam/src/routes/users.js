@@ -32,22 +32,19 @@ router.get('/login/:email', async (req, res) => {
     const email = req.params.email;
     var users = [];
     // lista di tutti gli utenti
-    await axios.get(`${env.fetchUri}/users`)
+    await axios.get(`${env.fetchUri}/users/`)
         .then(function (response) {
             users = response.data;
         })
         .catch(function (error) {
             console.log(error);
         })
-
+        
     const found = users.find(element => element.email == email);
-
     if (found != undefined) {
-        res.json(found)
-        res.sendStatus(200)
+        res.json(found).status(200)
     } else {
-        res.send("User not founded!")
-        res.sendStatus(404);
+        res.send({message: "User not founded!"}).status(404)
     }
 
 })
@@ -82,19 +79,19 @@ router.post('/register', async (req, res) => {
     }
 
     if (found != undefined) {
-        res.send("User with that email already exist!")
+        res.json({message: `User with that email already exist!`})
         res.sendStatus(404);
     } else {
         await axios.post(`${env.fetchUri}/users`, newUser)
         .then(function (response) {
-            console.log("---------------")
-            console.log(response);
             if (response.status == 201){
                 res.json(newUser)
+                res.sendStatus(201)
             }
         })
         .catch(function (error) {
-            res.send(`Something wrong happened ${error}`)
+            // res.send(`Something wrong happened ${error}`)
+            res.json({message: `Something wrong happened ${error}`})
             res.sendStatus(500);
         })
     }
